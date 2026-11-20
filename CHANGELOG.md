@@ -4,6 +4,38 @@ Este documento registra los cambios realizados en el proyecto, detallando el qu�
 
 ---
 
+## [2026-11-20] - Variante interactiva y accesible de enlace a GitHub (Eliana)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (High)
+* **Rama de trabajo:** `Eliana`
+* **Entorno:** React 19 + Vite 6 + lucide-react
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y Accesibilidad)
+* **Problema detectado:** El enlace a GitHub requería una variante interactiva personalizada para Eliana (`member.variant === 'eliana'`) manteniendo las dimensiones exactas en reposo (`254 × 52 px`), con retroalimentación visual clara de estado (no visitado vs. visitado), comportamiento táctil adecuado y respeto a usuarios con preferencias de movimiento reducido (`prefers-reduced-motion: reduce`).
+* **Objetivo:** Implementar los estilos, animaciones y estados interactivos propios de Eliana sin alterar los estilos ni el comportamiento de Ignacio o Ester. Incluye persistencia de estado visitado en `localStorage` (`'tp3-visited-eliana'`), badge dinámico (`Github` y `Check`), doble anillo luminoso menta en hover/focus, giro 3D horizontal de avatar `EM`, micro-pulsación en click y anulación accesible de movimiento.
+
+### 2. ¿Qué se cambió?
+* **Modelo de datos (`src/data/tp3Data.js`):**
+  * Se configuraron `github: 'https://github.com/ElianaMoguilevsky'` y `variant: 'eliana'` únicamente en el objeto de Eliana Moguilevsky dentro de `STARTUP_INFO.members`, manteniendo intactos a los demás integrantes y las sentencias R3 y R4.
+* **Componente de equipo (`src/components/SummaryAndTeam.jsx`):**
+  * Se detecta la variante de Eliana (`member.variant === 'eliana'`) y se aplica la clase `.member-pill-link--eliana` junto a `.is-visited` condicional.
+  * Se añadió persistencia en `localStorage` con la clave `'tp3-visited-eliana'` activada en `onClick`.
+  * Se renderizó el badge lateral `.member-ext-badge` con el ícono `Github` en reposo y `Check` una vez visitado (`aria-hidden="true"`).
+* **Estilos (`src/styles/index.css`):**
+  * Definición de `.member-pill-link--eliana` con dimensiones de reposo (254 × 52 px) y `justify-content: space-between`.
+  * Estilos de `:hover` y `:focus-visible`: fondo menta `var(--bg-tinted)`, doble anillo perimetral luminoso (`box-shadow: 0 0 0 3px rgba(59, 168, 122, 0.25)`), giro 360° en avatar `EM` y badge con fondo `var(--brand-primary)` y texto blanco.
+  * Micro-pulsación en `:active` (`scale(0.97)`).
+  * Estilo visitado (`:visited` y `.is-visited`): borde punteado verde `1.5px dashed var(--brand-primary)`, fondo `#f2f7f4` y badge en verde esmeralda.
+  * Regla `@media (prefers-reduced-motion: reduce)` desactivando animaciones y transformaciones.
+
+### 3. Archivos modificados
+* `src/data/tp3Data.js`
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
 ## [2026-11-20] - Menú móvil accesible con botón hamburguesa en Navbar
 
 ### Datos Técnicos de la Asistencia IA

@@ -12,7 +12,12 @@ export const STARTUP_INFO = {
   logoPath: '/logo_redbarrioanimal.webp',
   members: [
     { name: 'Ignacio Miguel Penovi', initials: 'IM' },
-    { name: 'Eliana Moguilevsky', initials: 'EM' },
+    {
+      name: 'Eliana Moguilevsky',
+      initials: 'EM',
+      github: 'https://github.com/ElianaMoguilevsky',
+      variant: 'eliana',
+    },
     { name: 'Ester Mosquera', initials: 'EM' },
     { name: 'Celeste Di Leonardo', initials: 'CD' },
   ],
