@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, ShieldAlert, Users, GraduationCap } from 'lucide-react';
+import { CheckCircle2, ShieldAlert, Users, GraduationCap, ArrowUpRight } from 'lucide-react';
 import { STARTUP_INFO } from '../data/tp3Data';
 
 export default function SummaryAndTeam() {
@@ -74,33 +74,43 @@ export default function SummaryAndTeam() {
                 <strong>{STARTUP_INFO.origin}</strong>.
               </p>
               <ul className="member-grid">
-                {STARTUP_INFO.members.map((member) => (
-                  <li
-                    key={member.name}
-                    className={`member-pill${member.name === 'Ester Mosquera' ? ' member-pill--linked' : ''}`}
-                  >
-                    {member.name === 'Ester Mosquera' ? (
-                      <a
-                        className="member-pill-link"
-                        href="https://github.com/Kira-Blan"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <span className="member-avatar" aria-hidden="true">
-                          {member.initials}
-                        </span>
-                        {member.name}
-                      </a>
-                    ) : (
-                      <>
-                        <span className="member-avatar" aria-hidden="true">
-                          {member.initials}
-                        </span>
-                        <span>{member.name}</span>
-                      </>
-                    )}
-                  </li>
-                ))}
+                {STARTUP_INFO.members.map((member) => {
+                  const isIgnacio = member.variant === 'ignacio';
+
+                  return (
+                    <li
+                      key={member.name}
+                      className={`member-pill${member.github ? ' member-pill--linked' : ''}`}
+                    >
+                      {member.github ? (
+                        <a
+                          className={`member-pill-link${isIgnacio ? ' member-pill-link--ignacio' : ''}`}
+                          href={member.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Perfil de GitHub de ${member.name}`}
+                        >
+                          <span className="member-avatar" aria-hidden="true">
+                            {member.initials}
+                          </span>
+                          <span className="member-name-text">{member.name}</span>
+                          {isIgnacio && (
+                            <span className="member-ext-badge" aria-hidden="true">
+                              <ArrowUpRight size={15} />
+                            </span>
+                          )}
+                        </a>
+                      ) : (
+                        <>
+                          <span className="member-avatar" aria-hidden="true">
+                            {member.initials}
+                          </span>
+                          <span>{member.name}</span>
+                        </>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
