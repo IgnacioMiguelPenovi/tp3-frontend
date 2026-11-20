@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   CheckCircle2,
   ShieldAlert,
@@ -7,27 +7,10 @@ import {
   ArrowUpRight,
   ExternalLink,
   Github,
-  Check,
 } from 'lucide-react';
 import { STARTUP_INFO } from '../data/tp3Data';
 
 export default function SummaryAndTeam() {
-  const [isElianaVisited, setIsElianaVisited] = useState(() => {
-    try {
-      return localStorage.getItem('tp3-visited-eliana') === 'true';
-    } catch {
-      return false;
-    }
-  });
-
-  const handleElianaClick = () => {
-    setIsElianaVisited(true);
-    try {
-      localStorage.setItem('tp3-visited-eliana', 'true');
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   return (
     <>
@@ -112,14 +95,11 @@ export default function SummaryAndTeam() {
                       {member.github ? (
                         isEliana ? (
                           <a
-                            className={`member-pill-link member-pill-link--eliana${
-                              isElianaVisited ? ' is-visited' : ''
-                            }`}
+                            className="member-pill-link member-pill-link--eliana"
                             href={member.github}
                             target="_blank"
                             rel="noreferrer"
                             aria-label="Perfil de GitHub de Eliana Moguilevsky"
-                            onClick={handleElianaClick}
                           >
                             <span className="member-pill-left">
                               <span className="member-avatar" aria-hidden="true">
@@ -128,11 +108,7 @@ export default function SummaryAndTeam() {
                               <span className="member-name-text">{member.name}</span>
                             </span>
                             <span className="member-ext-badge" aria-hidden="true">
-                              {isElianaVisited ? (
-                                <Check size={14} aria-hidden="true" />
-                              ) : (
-                                <Github size={14} aria-hidden="true" />
-                              )}
+                              <Github size={14} aria-hidden="true" />
                             </span>
                           </a>
                         ) : (

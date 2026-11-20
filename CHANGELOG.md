@@ -4,6 +4,96 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-20] - Sistema responsivo unificado en tres breakpoints (1200px, 900px, 400px)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Rama de trabajo:** `Eliana`
+* **Entorno:** React 19 + Vite 6 + lucide-react
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y Accesibilidad)
+* **Problema detectado:** Existían anchos rígidos y media queries dispersos (960px, 900px, 640px) que provocaban desbordes horizontales o saltos visuales en resoluciones intermedias y móviles muy reducidas (< 400px), además de riesgo de overflow por bloques de código y dimensiones de tarjetas fijadas por contenido (`min-width: auto`).
+* **Objetivo:** Lograr una landing verdaderamente fluida y responsiva sin alterar el diseño desktop, consolidando los media queries en tres breakpoints precisos (1200px, 900px y 400px), liberando anchos fijos, agregando protección contra desbordes en tarjetas y código, reorientando flechas en diagramas verticales y apilando controles en pantallas ultra reducidas.
+
+### 2. ¿Qué se cambió?
+* **Hoja de estilos (`src/styles/index.css`):**
+  * **Eliminación de anchos rígidos y prevención de overflow:**
+    * Se configuró `overflow-wrap: anywhere` en la etiqueta base `code`.
+    * Se aplicó `min-width: 0` a todas las tarjetas del sistema (`.meta-card, .startup-card, .breakdown-card, .summary-tile, .diagram-card, .team-card, .flow-node`).
+    * Se ajustó `.flow-diamond-wrap` con padding proporcional fluido `padding: 28px clamp(28px, 14%, 96px)`.
+  * **Breakpoint 1200px (`@media (max-width: 1200px)`):**
+    * Se acotó `.container` a `width: min(980px, 100% - 40px)`.
+  * **Breakpoint 900px (`@media (max-width: 900px)`):**
+    * Se unificaron a una sola columna vertical (`1fr` / `minmax(0, 1fr)`) las grillas `.hero-grid`, `.breakdown-grid`, `.agent-summary-grid`, `.team-grid`, `.hero-meta-grid`, `.member-grid` y `.flow-canvas-grid`.
+    * Se rotaron las flechas de enlace de diagramas a 90° (`.flow-arrow-h { transform: rotate(90deg); margin: 6px 0; }`) alineando celdas laterales.
+    * Se integró el menú desplegable de navegación móvil (`.nav-toggle`, `.nav-links`).
+  * **Breakpoint 400px (`@media (max-width: 400px)`):**
+    * Reducción de márgenes y paddings laterales en `.container` (`width: calc(100% - 24px)`) y tarjetas (a `12px`).
+    * Apilado vertical de botones de acción (`.hero-actions { flex-direction: column; width: 100%; } .hero-actions .btn { width: 100%; justify-content: center; }`).
+    * Ajuste de tipografías principales (`.hero-title: 1.65rem`, `.section-title: 1.35rem`, `.hero-objective: 1rem`) previniendo cualquier desborde horizontal.
+
+### 3. Archivos modificados
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
+## [2026-11-20] - Desactivación de estado visitado en tarjeta de equipo (Eliana)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Rama de trabajo:** `Eliana`
+* **Entorno:** React 19 + Vite 6 + lucide-react
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y Accesibilidad)
+* **Problema detectado:** Al hacer clic en el enlace a GitHub de la tarjeta de Eliana, la persistencia y estilización del estado visitado (fondo suave, borde punteado verde y cambio de ícono a `Check`) hacían que la tarjeta quedara visualmente discordante con respecto a las demás tarjetas de equipo una vez visitada.
+* **Objetivo:** Desactivar el estado visitado (`:visited` / `.is-visited`) únicamente para la tarjeta de Eliana, conservando intactos sus efectos interactivos de reposo, hover con giro 3D de avatar, foco accesible y active con micro-pulsación, de modo que conserve coherencia visual y no cambie permanentemente tras ser pulsada.
+
+### 2. ¿Qué se cambió?
+* **Componente de equipo (`src/components/SummaryAndTeam.jsx`):**
+  * Se removió el estado local `isElianaVisited` y la persistencia en `localStorage`.
+  * Se eliminó el manejador `handleElianaClick` y la clase `.is-visited`.
+  * Se fijó el badge con el ícono `Github` en todo momento (removiendo el cambio a `Check`).
+* **Hoja de estilos (`src/styles/index.css`):**
+  * Se eliminaron las reglas CSS de `.member-pill-link--eliana:visited` y `.member-pill-link--eliana.is-visited`.
+
+### 3. Archivos modificados
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
+## [2026-11-20] - Corrección de navbar fijo y menú móvil en pantallas reducidas
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Rama de trabajo:** `Eliana`
+* **Entorno:** React 19 + Vite 6 + lucide-react
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y Accesibilidad)
+* **Problema detectado:** En pantallas móviles (< 900px), al scrollear hacia abajo el navbar se cortaba a la mitad o no permanecía fijado en el viewport debido al conflicto entre `overflow-x: hidden` en `body` y `position: sticky` en `.site-header`. Asimismo, se requería asegurar que el panel desplegable del menú hamburguesa se muestre completo y que el enlace del logo (`.nav-brand`) cierre el menú automáticamente al regresar a `#inicio`.
+* **Objetivo:** Garantizar que la barra de navegación permanezca fija (`position: fixed`), visible y accesible en todo momento en dispositivos móviles sin desbordes ni cortes, adaptando `.app-shell` con el espacio superior correspondiente (`padding-top: 71px`), y asegurando el cierre del menú móvil tanto en enlaces de sección como en la marca.
+
+### 2. ¿Qué se cambió?
+* **Hoja de estilos (`src/styles/index.css`):**
+  * Se removió `overflow-x: hidden` de `body`.
+  * Se configuró `.site-header` con `position: fixed`, `top: 0`, `left: 0`, `width: 100%` y `z-index: 100`.
+  * Se agregó `padding-top: 71px` a `.app-shell` compensando la altura de la cabecera fija.
+  * En `@media (max-width: 900px)`, se agregó a `.nav-links` `max-height: calc(100vh - 71px)` y `overflow-y: auto`.
+* **Componente Navbar (`src/components/Navbar.jsx`):**
+  * Se verificó y aseguró el manejador `onClick={closeMenu}` (`setIsOpen(false)`) en `.nav-brand` para cerrar el menú hamburguesa al pulsar el logo.
+
+### 3. Archivos modificados
+* `src/components/Navbar.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
 ## [2026-11-20] - Variante interactiva y accesible de enlace a GitHub (Eliana)
 
 ### Datos Técnicos de la Asistencia IA
