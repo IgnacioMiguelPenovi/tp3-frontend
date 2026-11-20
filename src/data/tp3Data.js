@@ -11,14 +11,23 @@ export const STARTUP_INFO = {
     'Cuando una persona colabora redondeando su compra y cuando un refugio solicita recibir fondos, la plataforma necesita reglas claras para evitar cobros duplicados, donaciones mal registradas y transferencias sin rendición previa.',
   logoPath: '/logo_redbarrioanimal.webp',
   members: [
-    { name: 'Ignacio Miguel Penovi', initials: 'IM' },
+    {
+      name: 'Ignacio Miguel Penovi',
+      initials: 'IM',
+      github: 'https://github.com/IgnacioMiguelPenovi',
+      variant: 'ignacio',
+    },
     {
       name: 'Eliana Moguilevsky',
       initials: 'EM',
       github: 'https://github.com/ElianaMoguilevsky',
       variant: 'eliana',
     },
-    { name: 'Ester Mosquera', initials: 'EM' },
+    {
+      name: 'Ester Mosquera',
+      initials: 'EM',
+      github: 'https://github.com/Kira-Blan',
+    },
     { name: 'Celeste Di Leonardo', initials: 'CD' },
   ],
 };

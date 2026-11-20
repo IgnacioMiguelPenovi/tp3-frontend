@@ -4,6 +4,7 @@ import {
   ShieldAlert,
   Users,
   GraduationCap,
+  ArrowUpRight,
   ExternalLink,
   Github,
   Check,
@@ -100,23 +101,21 @@ export default function SummaryAndTeam() {
               </p>
               <ul className="member-grid">
                 {STARTUP_INFO.members.map((member) => {
-                  const isEliana = member.variant === 'eliana' || member.name === 'Eliana Moguilevsky';
-                  const githubUrl =
-                    member.github ||
-                    (member.name === 'Ester Mosquera' ? 'https://github.com/Kira-Blan' : null);
+                  const isIgnacio = member.variant === 'ignacio';
+                  const isEliana = member.variant === 'eliana';
 
                   return (
                     <li
                       key={member.name}
-                      className={`member-pill${githubUrl ? ' member-pill--linked' : ''}`}
+                      className={`member-pill${member.github ? ' member-pill--linked' : ''}`}
                     >
-                      {githubUrl ? (
+                      {member.github ? (
                         isEliana ? (
                           <a
                             className={`member-pill-link member-pill-link--eliana${
                               isElianaVisited ? ' is-visited' : ''
                             }`}
-                            href={githubUrl}
+                            href={member.github}
                             target="_blank"
                             rel="noreferrer"
                             aria-label="Perfil de GitHub de Eliana Moguilevsky"
@@ -126,7 +125,7 @@ export default function SummaryAndTeam() {
                               <span className="member-avatar" aria-hidden="true">
                                 {member.initials}
                               </span>
-                              <span className="member-name">{member.name}</span>
+                              <span className="member-name-text">{member.name}</span>
                             </span>
                             <span className="member-ext-badge" aria-hidden="true">
                               {isElianaVisited ? (
@@ -138,17 +137,21 @@ export default function SummaryAndTeam() {
                           </a>
                         ) : (
                           <a
-                            className="member-pill-link"
-                            href={githubUrl}
+                            className={`member-pill-link${isIgnacio ? ' member-pill-link--ignacio' : ''}`}
+                            href={member.github}
                             target="_blank"
                             rel="noreferrer"
-                            aria-label={`Perfil de GitHub de ${member.name} (se abre en una nueva pestaña)`}
+                            aria-label={`Perfil de GitHub de ${member.name}`}
                           >
                             <span className="member-avatar" aria-hidden="true">
                               {member.initials}
                             </span>
-                            <span className="member-name">{member.name}</span>
-                            <ExternalLink size={14} aria-hidden="true" className="member-link-icon" />
+                            <span className="member-name-text">{member.name}</span>
+                            {isIgnacio && (
+                              <span className="member-ext-badge" aria-hidden="true">
+                                <ArrowUpRight size={15} />
+                              </span>
+                            )}
                           </a>
                         )
                       ) : (
@@ -156,7 +159,7 @@ export default function SummaryAndTeam() {
                           <span className="member-avatar" aria-hidden="true">
                             {member.initials}
                           </span>
-                          <span>{member.name}</span>
+                          <span className="member-name-text">{member.name}</span>
                         </>
                       )}
                     </li>
