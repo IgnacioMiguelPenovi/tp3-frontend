@@ -1349,6 +1349,39 @@ code {
   font-weight: 600;
 }
 
+.member-pill--linked {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.member-pill-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-page);
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.member-pill-link:hover {
+  transform: scale(1.04);
+  border-color: var(--brand-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.member-pill-link:focus-visible {
+  outline: 3px solid var(--brand-dark);
+  outline-offset: 3px;
+}
+
 .member-avatar {
   width: 30px;
   height: 30px;

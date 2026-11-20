@@ -75,11 +75,30 @@ export default function SummaryAndTeam() {
               </p>
               <ul className="member-grid">
                 {STARTUP_INFO.members.map((member) => (
-                  <li key={member.name} className="member-pill">
-                    <span className="member-avatar" aria-hidden="true">
-                      {member.initials}
-                    </span>
-                    <span>{member.name}</span>
+                  <li
+                    key={member.name}
+                    className={`member-pill${member.name === 'Ester Mosquera' ? ' member-pill--linked' : ''}`}
+                  >
+                    {member.name === 'Ester Mosquera' ? (
+                      <a
+                        className="member-pill-link"
+                        href="https://github.com/Kira-Blan"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className="member-avatar" aria-hidden="true">
+                          {member.initials}
+                        </span>
+                        {member.name}
+                      </a>
+                    ) : (
+                      <>
+                        <span className="member-avatar" aria-hidden="true">
+                          {member.initials}
+                        </span>
+                        <span>{member.name}</span>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
