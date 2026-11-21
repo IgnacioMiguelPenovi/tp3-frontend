@@ -50,7 +50,10 @@ body {
   background-color: var(--bg-page);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+}
+
+.app-shell {
+  padding-top: 71px;
 }
 
 h1,
@@ -74,6 +77,17 @@ code {
   color: var(--brand-dark);
   padding: 2px 6px;
   border-radius: 5px;
+  overflow-wrap: anywhere;
+}
+
+.meta-card,
+.startup-card,
+.breakdown-card,
+.summary-tile,
+.diagram-card,
+.team-card,
+.flow-node {
+  min-width: 0;
 }
 
 :focus-visible {
@@ -88,9 +102,11 @@ code {
 
 /* Header & Navbar */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 40;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-light);
@@ -1005,7 +1021,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px 96px;
+  padding: 28px clamp(28px, 14%, 96px);
   text-align: center;
   transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
   --diamond-fill: var(--decision-fill);
@@ -1382,6 +1398,191 @@ code {
   outline-offset: 3px;
 }
 
+.member-link-icon {
+  margin-left: auto;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color 160ms ease;
+}
+
+.member-pill-link:hover .member-link-icon {
+  color: var(--brand-primary);
+}
+
+/* Variante Ignacio: barrido degradado, resplandor y elevación */
+.member-pill-link--ignacio {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  justify-content: space-between;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.member-pill-link--ignacio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(125deg, var(--brand-dark) 0%, var(--brand-primary) 60%, var(--brand-mint) 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.member-pill-link--ignacio::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -60%;
+  width: 45%;
+  height: 180%;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-22deg) translateX(0);
+  opacity: 0;
+  transition: transform 520ms ease, opacity 180ms ease;
+}
+
+.member-pill-link--ignacio .member-name-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.member-pill-link--ignacio .member-avatar {
+  transition: background-color 220ms ease, color 220ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Variante Eliana: dimensiones exactas en reposo (254x52px) */
+.member-pill-link--eliana {
+  justify-content: space-between;
+  min-height: 52px;
+  box-sizing: border-box;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 160ms ease;
+}
+
+.member-pill-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.member-ext-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--brand-soft);
+  color: var(--brand-dark);
+  flex-shrink: 0;
+  transition: background-color 220ms ease, color 220ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Efectos de Ignacio en hover */
+.member-pill-link--ignacio:hover,
+.member-pill-link--ignacio:focus-visible {
+  transform: translateY(-2px);
+  color: #ffffff;
+  border-color: var(--brand-dark);
+  box-shadow: 0 8px 20px rgba(7, 71, 52, 0.22);
+}
+
+.member-pill-link--ignacio:hover::before,
+.member-pill-link--ignacio:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.member-pill-link--ignacio:hover::after,
+.member-pill-link--ignacio:focus-visible::after {
+  opacity: 1;
+  transform: skewX(-22deg) translateX(420%);
+}
+
+.member-pill-link--ignacio:hover .member-avatar,
+.member-pill-link--ignacio:focus-visible .member-avatar {
+  background: #ffffff;
+  color: var(--brand-dark);
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.member-pill-link--ignacio:hover .member-ext-badge,
+.member-pill-link--ignacio:focus-visible .member-ext-badge {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
+/* Badge especifico y avatar para Variante Eliana */
+.member-pill-link--eliana .member-ext-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  transition: all 200ms ease;
+}
+
+.member-pill-link--eliana .member-avatar {
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+/* Hover y focus-visible Eliana: fondo menta, doble anillo luminoso, giro 360deg avatar EM, badge brand-primary */
+.member-pill-link--eliana:hover,
+.member-pill-link--eliana:focus-visible {
+  transform: none; /* override escalado de Ester */
+  background: var(--bg-tinted);
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(59, 168, 122, 0.25);
+}
+
+.member-pill-link--eliana:hover .member-avatar,
+.member-pill-link--eliana:focus-visible .member-avatar {
+  transform: rotateY(360deg);
+}
+
+.member-pill-link--eliana:hover .member-ext-badge,
+.member-pill-link--eliana:focus-visible .member-ext-badge {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-color: var(--brand-primary);
+}
+
+/* Active (click): micro-pulsacion */
+.member-pill-link--eliana:active {
+  transform: scale(0.97);
+}
+
+/* Reduccion de movimiento unificada */
+@media (prefers-reduced-motion: reduce) {
+  .member-pill-link--ignacio,
+  .member-pill-link--ignacio::before,
+  .member-pill-link--ignacio::after,
+  .member-pill-link--ignacio .member-avatar,
+  .member-pill-link--eliana,
+  .member-pill-link--eliana .member-avatar,
+  .member-pill-link--eliana .member-ext-badge,
+  .member-ext-badge {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .member-pill-link--eliana:hover .member-avatar,
+  .member-pill-link--eliana:focus-visible .member-avatar {
+    transform: none !important;
+  }
+
+  .member-pill-link--eliana:active {
+    transform: none !important;
+  }
+}
+
 .member-avatar {
   width: 30px;
   height: 30px;
@@ -1435,8 +1636,14 @@ code {
   flex-wrap: wrap;
 }
 
-/* Responsive fallback for smaller screens */
-@media (max-width: 960px) {
+/* Responsive Breakpoints (1200px, 900px, 400px) */
+@media (max-width: 1200px) {
+  .container {
+    width: min(980px, 100% - 40px);
+  }
+}
+
+@media (max-width: 900px) {
   .hero-grid,
   .breakdown-grid,
   .agent-summary-grid,
@@ -1444,8 +1651,13 @@ code {
     grid-template-columns: 1fr;
   }
 
-  .flow-canvas-grid {
+  .hero-meta-grid,
+  .member-grid {
     grid-template-columns: 1fr;
+  }
+
+  .flow-canvas-grid {
+    grid-template-columns: minmax(0, 1fr);
     gap: 14px;
     justify-items: center;
   }
@@ -1462,9 +1674,7 @@ code {
     transform: rotate(90deg);
     margin: 6px 0;
   }
-}
 
-@media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
   }
@@ -1483,6 +1693,8 @@ code {
     align-items: stretch;
     padding: 16px 20px 20px;
     gap: 8px;
+    max-height: calc(100vh - 71px);
+    overflow-y: auto;
   }
 
   .nav-links.is-open {
@@ -1508,9 +1720,40 @@ code {
   }
 }
 
-@media (max-width: 640px) {
-  .hero-meta-grid,
-  .member-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 400px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .meta-card,
+  .startup-card,
+  .breakdown-card,
+  .summary-tile,
+  .diagram-card,
+  .team-card,
+  .flow-node {
+    padding: 12px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .hero-objective {
+    font-size: 1rem;
   }
 }
