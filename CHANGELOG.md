@@ -4,6 +4,79 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-21] - Gatito Honey que sigue el cursor y cursor predeterminado (Ester)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** OpenAI Codex
+* **Modelo IA:** GPT-6
+* **Rama de trabajo:** `Ester`
+* **Entorno:** React 19 + Vite 6 + oneko 0.6.1
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y diseño)
+* **Pedido:** Incorporar el gatito Honey de Oneko para que acompañe el cursor.
+* **Problema detectado durante la iteración:** Las variantes de cursor con ovillo y ratón no convencieron al grupo; el ratón además se perdía visualmente y no combinaba con la landing de ayuda animal.
+* **Objetivo:** Conservar el gatito, sin textos ni emojis, y volver al cursor predeterminado del navegador.
+
+### 2. ¿Qué se cambió?
+* **Dependencias (`package.json` y `package-lock.json`):** Se agregó `oneko` (`^0.6.1`).
+* **Aplicación (`src/App.jsx`):** Se importó y renderizó `<Oneko>` con `skin="honey"`; se desactivaron los maullidos (`meow={false}`), el movimiento libre (`freerunChance={0}`) y las burbujas (`bubbleEnabled={false}`).
+* **Cursor:** Se mantuvo el cursor predeterminado del navegador, sin agregar una imagen personalizada de ratón.
+
+### 3. Archivos modificados
+* `package.json`
+* `package-lock.json`
+* `src/App.jsx`
+* `CHANGELOG.md`
+* **Commit de integración en `Ester`:** `d6dca56` (coautor: OpenAI Codex).
+
+---
+
+## [2026-11-20] - Enlace de GitHub con hover para Ester en la lista del equipo
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** OpenAI Codex
+* **Modelo IA:** GPT-6
+* **Rama de trabajo:** `Ester`
+* **Entorno:** React 19 + Vite 6
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y diseño)
+* **Pedido:** Enlazar el nombre de Ester Mosquera en la lista del equipo con su perfil de GitHub (`https://github.com/Kira-Blan`).
+* **Objetivo:** Mantener la tarjeta con el aspecto de las demás, dejar toda su superficie clickeable y dar una respuesta visual al pasar el cursor, con foco visible para teclado.
+
+### 2. ¿Qué se cambió?
+* **Componente de equipo (`src/components/SummaryAndTeam.jsx`):** El avatar y el nombre de Ester se agruparon dentro de un enlace externo que abre el perfil en una pestaña nueva (`target="_blank"`, `rel="noreferrer"`).
+* **Hoja de estilos (`src/styles/index.css`):** Se ajustó la tarjeta enlazada para conservar fondo, borde, tipografía, espaciado y forma de las demás. El hover la agranda suavemente (`scale(1.04)`) y añade borde y sombra; `:focus-visible` muestra un contorno accesible.
+
+### 3. Archivos modificados
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* **Commit:** `a59f65d` (`feat: agregar hover al enlace de GitHub de Ester`), con coautoría de Codex.
+
+---
+
+
+## [2026-11-19] - Favicon con huella para RedBarrioAnimal
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** OpenAI Codex
+* **Modelo IA:** GPT-6
+* **Rama de trabajo:** `Ester`
+* **Entorno:** React 19 + Vite 6
+
+### 1. ¿Por qué se realizó el cambio? (Identidad visual)
+* **Objetivo:** Identificar el sitio en la pestaña del navegador con un favicon acorde a la temática de RedBarrioAnimal.
+
+### 2. ¿Qué se cambió?
+* **Recurso visual (`public/favicon.png`):** Se añadió el favicon PNG con una huella animal.
+* **Documento HTML (`index.html`):** Se enlazó el recurso mediante `<link rel="icon" type="image/png" href="/favicon.png" />`.
+
+### 3. Archivos modificados
+* `public/favicon.png`
+* `index.html`
+* **Commit:** `0ecfd4b` (`Add paw favicon`), con coautoría de ChatGPT.
+
+---
+
 ## [2026-11-20] - Sistema responsivo unificado en tres breakpoints (1200px, 900px, 400px)
 
 ### Datos Técnicos de la Asistencia IA
@@ -39,6 +112,7 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+
 ## [2026-11-20] - Desactivación de estado visitado en tarjeta de equipo (Eliana)
 
 ### Datos Técnicos de la Asistencia IA
@@ -65,6 +139,9 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 * `CHANGELOG.md`
 
 ---
+
+
+
 
 ## [2026-11-20] - Corrección de navbar fijo y menú móvil en pantallas reducidas
 
@@ -93,6 +170,8 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 * `CHANGELOG.md`
 
 ---
+
+
 
 ## [2026-11-20] - Variante interactiva y accesible de enlace a GitHub (Eliana)
 
@@ -128,6 +207,8 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+
+
 ## [2026-11-20] - Enlace de GitHub interactivo para Ignacio en la sección de equipo
 
 ### Datos Técnicos de la Asistencia IA
@@ -158,6 +239,8 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 * `CHANGELOG.md`
 
 ---
+
+
 
 ## [2026-11-20] - Menú móvil accesible con botón hamburguesa en Navbar
 
@@ -193,9 +276,33 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
-## Registros anteriores de la sesión de equipo
+
+
+
+
+## [2026-11-05] - Definición inicial de dos sentencias y desglose de reglas de negocio (AI)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Contexto de entrega:** Previo a la creación del repositorio Git (documentación generada en formato PDF / Markdown)
+
+### 1. ¿Por qué se realizó el cambio? (Definición del problema y reglas de negocio)
+* **Contexto:** En esta etapa aún no existía el repositorio del proyecto; el trabajo se originó a partir del documento de consignas `TP3.txt` y se formalizó en formato PDF/documento previo (`Punto3.pdf` / `Punto3.md`).
+* **Objetivo:** Definir la problemática de la startup RedBarrioAnimal y establecer las dos sentencias base con sus reglas de negocio desglosadas (información requerida, condición lógica y consecuencia) para el sistema de donaciones y transferencias a refugios.
+
+### 2. ¿Qué se definió?
+* **Sentencias principales del proyecto:**
+  * **Sentencia 1 (R3 - Donaciones por redondeo):** *"Red de donaciones por redondeo de compras para refugios de animales. Si la compra todavía no fue pagada, el cliente confirmó el total y el medio elegido es una tarjeta habilitada o una billetera habilitada, el sistema permite iniciar el pago; solo registra una donación como pagada si estaba incluida en ese total y el proveedor confirma el pago exitoso de esa misma operación."*
+  * **Sentencia 2 (R4 - Transferencias a refugios):** *"Cuando una persona colabora redondeando su compra y cuando un refugio solicita recibir fondos, la plataforma necesita reglas claras para evitar cobros duplicados, donaciones mal registradas y transferencias sin rendición previa. Si un refugio solicita una transferencia y su informe de gastos está pendiente de verificación, el sistema deja la solicitud en revisión para una persona responsable."*
+* **Desglose de condiciones y consecuencias:** Se esquematizaron las tablas de datos necesarios, condiciones compuestas y consecuencias operativas correspondientes a R3 y R4.
+
+### 3. Archivos y entregables originados
+* `Punto3.pdf` / `Punto3.md` (documento de trabajo inicial previo al repositorio)
+
+## Registros anteriores
 
 | Fecha | Razón del cambio | Qué se cambió | Archivos modificados |
-|-------|------------------|----------------|----------------------|
+|---|---|---|---|
 | 2026‑11‑05 13:12 | Consultar contenido del PDF y del archivo de texto enviado por el usuario | Lectura del archivo `TP3.txt` para localizar la sección "Qué tienen que hacer" y el punto 3 | *Ningún archivo modificado* |
 | 2026‑11‑20 13:45 | Registrar en un `changelog.md` todas las acciones realizadas en esta conversación | Creación del archivo `changelog.md` con el resumen anterior | `tp3-frontend\changelog.md` |
