@@ -31,6 +31,29 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-20] - Enlace de GitHub con hover para Ester en la lista del equipo
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** OpenAI Codex
+* **Modelo IA:** GPT-6
+* **Rama de trabajo:** `Ester`
+* **Entorno:** React 19 + Vite 6
+
+### 1. ¿Por qué se realizó el cambio? (Motivación y diseño)
+* **Pedido:** Enlazar el nombre de Ester Mosquera en la lista del equipo con su perfil de GitHub (`https://github.com/Kira-Blan`).
+* **Objetivo:** Mantener la tarjeta con el aspecto de las demás, dejar toda su superficie clickeable y dar una respuesta visual al pasar el cursor, con foco visible para teclado.
+
+### 2. ¿Qué se cambió?
+* **Componente de equipo (`src/components/SummaryAndTeam.jsx`):** El avatar y el nombre de Ester se agruparon dentro de un enlace externo que abre el perfil en una pestaña nueva (`target="_blank"`, `rel="noreferrer"`).
+* **Hoja de estilos (`src/styles/index.css`):** Se ajustó la tarjeta enlazada para conservar fondo, borde, tipografía, espaciado y forma de las demás. El hover la agranda suavemente (`scale(1.04)`) y añade borde y sombra; `:focus-visible` muestra un contorno accesible.
+
+### 3. Archivos modificados
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* **Commit:** `a59f65d` (`feat: agregar hover al enlace de GitHub de Ester`), con coautoría de Codex.
+
+---
+
 
 ## [2026-11-19] - Favicon con huella para RedBarrioAnimal
 
@@ -51,28 +74,6 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 * `public/favicon.png`
 * `index.html`
 * **Commit:** `0ecfd4b` (`Add paw favicon`), con coautoría de ChatGPT.
-
----
-
-## [2026-11-05] - Definición inicial de dos sentencias y desglose de reglas de negocio (AI)
-
-### Datos Técnicos de la Asistencia IA
-* **Agente IA:** Antigravity (Google DeepMind)
-* **Modelo IA:** Gemini 3.8 Flash (Medium)
-* **Contexto de entrega:** Previo a la creación del repositorio Git (documentación generada en formato PDF / Markdown)
-
-### 1. ¿Por qué se realizó el cambio? (Definición del problema y reglas de negocio)
-* **Contexto:** En esta etapa aún no existía el repositorio del proyecto; el trabajo se originó a partir del documento de consignas `TP3.txt` y se formalizó en formato PDF/documento previo (`Punto3.pdf` / `Punto3.md`).
-* **Objetivo:** Definir la problemática de la startup RedBarrioAnimal y establecer las dos sentencias base con sus reglas de negocio desglosadas (información requerida, condición lógica y consecuencia) para el sistema de donaciones y transferencias a refugios.
-
-### 2. ¿Qué se definió?
-* **Sentencias principales del proyecto:**
-  * **Sentencia 1 (R3 - Donaciones por redondeo):** *"Red de donaciones por redondeo de compras para refugios de animales. Si la compra todavía no fue pagada, el cliente confirmó el total y el medio elegido es una tarjeta habilitada o una billetera habilitada, el sistema permite iniciar el pago; solo registra una donación como pagada si estaba incluida en ese total y el proveedor confirma el pago exitoso de esa misma operación."*
-  * **Sentencia 2 (R4 - Transferencias a refugios):** *"Cuando una persona colabora redondeando su compra y cuando un refugio solicita recibir fondos, la plataforma necesita reglas claras para evitar cobros duplicados, donaciones mal registradas y transferencias sin rendición previa. Si un refugio solicita una transferencia y su informe de gastos está pendiente de verificación, el sistema deja la solicitud en revisión para una persona responsable."*
-* **Desglose de condiciones y consecuencias:** Se esquematizaron las tablas de datos necesarios, condiciones compuestas y consecuencias operativas correspondientes a R3 y R4.
-
-### 3. Archivos y entregables originados
-* `Punto3.pdf` / `Punto3.md` (documento de trabajo inicial previo al repositorio)
 
 ---
 
@@ -278,6 +279,26 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 
 
+
+## [2026-11-05] - Definición inicial de dos sentencias y desglose de reglas de negocio (AI)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Contexto de entrega:** Previo a la creación del repositorio Git (documentación generada en formato PDF / Markdown)
+
+### 1. ¿Por qué se realizó el cambio? (Definición del problema y reglas de negocio)
+* **Contexto:** En esta etapa aún no existía el repositorio del proyecto; el trabajo se originó a partir del documento de consignas `TP3.txt` y se formalizó en formato PDF/documento previo (`Punto3.pdf` / `Punto3.md`).
+* **Objetivo:** Definir la problemática de la startup RedBarrioAnimal y establecer las dos sentencias base con sus reglas de negocio desglosadas (información requerida, condición lógica y consecuencia) para el sistema de donaciones y transferencias a refugios.
+
+### 2. ¿Qué se definió?
+* **Sentencias principales del proyecto:**
+  * **Sentencia 1 (R3 - Donaciones por redondeo):** *"Red de donaciones por redondeo de compras para refugios de animales. Si la compra todavía no fue pagada, el cliente confirmó el total y el medio elegido es una tarjeta habilitada o una billetera habilitada, el sistema permite iniciar el pago; solo registra una donación como pagada si estaba incluida en ese total y el proveedor confirma el pago exitoso de esa misma operación."*
+  * **Sentencia 2 (R4 - Transferencias a refugios):** *"Cuando una persona colabora redondeando su compra y cuando un refugio solicita recibir fondos, la plataforma necesita reglas claras para evitar cobros duplicados, donaciones mal registradas y transferencias sin rendición previa. Si un refugio solicita una transferencia y su informe de gastos está pendiente de verificación, el sistema deja la solicitud en revisión para una persona responsable."*
+* **Desglose de condiciones y consecuencias:** Se esquematizaron las tablas de datos necesarios, condiciones compuestas y consecuencias operativas correspondientes a R3 y R4.
+
+### 3. Archivos y entregables originados
+* `Punto3.pdf` / `Punto3.md` (documento de trabajo inicial previo al repositorio)
 
 ## Registros anteriores
 
