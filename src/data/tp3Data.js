@@ -17,7 +17,12 @@ export const STARTUP_INFO = {
       github: 'https://github.com/IgnacioMiguelPenovi',
       variant: 'ignacio',
     },
-    { name: 'Eliana Moguilevsky', initials: 'EM' },
+    {
+      name: 'Eliana Moguilevsky',
+      initials: 'EM',
+      github: 'https://github.com/ElianaMoguilevsky',
+      variant: 'eliana',
+    },
     {
       name: 'Ester Mosquera',
       initials: 'EM',

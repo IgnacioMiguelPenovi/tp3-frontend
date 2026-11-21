@@ -1,8 +1,17 @@
 import React from 'react';
-import { CheckCircle2, ShieldAlert, Users, GraduationCap, ArrowUpRight } from 'lucide-react';
+import {
+  CheckCircle2,
+  ShieldAlert,
+  Users,
+  GraduationCap,
+  ArrowUpRight,
+  ExternalLink,
+  Github,
+} from 'lucide-react';
 import { STARTUP_INFO } from '../data/tp3Data';
 
 export default function SummaryAndTeam() {
+
   return (
     <>
       <section className="section-surface comparison-section">
@@ -76,6 +85,7 @@ export default function SummaryAndTeam() {
               <ul className="member-grid">
                 {STARTUP_INFO.members.map((member) => {
                   const isIgnacio = member.variant === 'ignacio';
+                  const isEliana = member.variant === 'eliana';
 
                   return (
                     <li
@@ -83,29 +93,49 @@ export default function SummaryAndTeam() {
                       className={`member-pill${member.github ? ' member-pill--linked' : ''}`}
                     >
                       {member.github ? (
-                        <a
-                          className={`member-pill-link${isIgnacio ? ' member-pill-link--ignacio' : ''}`}
-                          href={member.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`Perfil de GitHub de ${member.name}`}
-                        >
-                          <span className="member-avatar" aria-hidden="true">
-                            {member.initials}
-                          </span>
-                          <span className="member-name-text">{member.name}</span>
-                          {isIgnacio && (
-                            <span className="member-ext-badge" aria-hidden="true">
-                              <ArrowUpRight size={15} />
+                        isEliana ? (
+                          <a
+                            className="member-pill-link member-pill-link--eliana"
+                            href={member.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="Perfil de GitHub de Eliana Moguilevsky"
+                          >
+                            <span className="member-pill-left">
+                              <span className="member-avatar" aria-hidden="true">
+                                {member.initials}
+                              </span>
+                              <span className="member-name-text">{member.name}</span>
                             </span>
-                          )}
-                        </a>
+                            <span className="member-ext-badge" aria-hidden="true">
+                              <Github size={14} aria-hidden="true" />
+                            </span>
+                          </a>
+                        ) : (
+                          <a
+                            className={`member-pill-link${isIgnacio ? ' member-pill-link--ignacio' : ''}`}
+                            href={member.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`Perfil de GitHub de ${member.name}`}
+                          >
+                            <span className="member-avatar" aria-hidden="true">
+                              {member.initials}
+                            </span>
+                            <span className="member-name-text">{member.name}</span>
+                            {isIgnacio && (
+                              <span className="member-ext-badge" aria-hidden="true">
+                                <ArrowUpRight size={15} />
+                              </span>
+                            )}
+                          </a>
+                        )
                       ) : (
                         <>
                           <span className="member-avatar" aria-hidden="true">
                             {member.initials}
                           </span>
-                          <span>{member.name}</span>
+                          <span className="member-name-text">{member.name}</span>
                         </>
                       )}
                     </li>
