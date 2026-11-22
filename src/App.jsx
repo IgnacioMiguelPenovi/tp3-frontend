@@ -1,4 +1,5 @@
 import React from 'react';
+import Oneko from 'oneko';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SentenceBreakdown from './components/SentenceBreakdown';
@@ -13,6 +14,13 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      <Oneko
+        skin="honey"
+        meow={false}
+        freerunChance={0}
+        bubbleEnabled={false}
+        storageKey="redbarrioanimal:oneko"
+      />
       <Navbar />
       <main>
         <Hero />
