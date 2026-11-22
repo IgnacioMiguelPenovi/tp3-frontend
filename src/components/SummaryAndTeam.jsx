@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mascot } from 'page-mascot';
 import {
   CheckCircle2,
   ShieldAlert,
@@ -86,6 +87,7 @@ export default function SummaryAndTeam() {
                 {STARTUP_INFO.members.map((member) => {
                   const isIgnacio = member.variant === 'ignacio';
                   const isEliana = member.variant === 'eliana';
+                  const isEster = member.variant === 'ester';
 
                   return (
                     <li
@@ -93,18 +95,42 @@ export default function SummaryAndTeam() {
                       className={`member-pill${member.github ? ' member-pill--linked' : ''}`}
                     >
                       {member.github ? (
-                        isEliana ? (
-                          <a
-                            className="member-pill-link member-pill-link--eliana"
-                            href={member.github}
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="Perfil de GitHub de Eliana Moguilevsky"
-                          >
-                            <span className="member-pill-left">
+                        isEster ? (
+                          <div className="member-pill-link member-pill-link--ester">
+                            <a
+                              className="member-name-link"
+                              href={member.github}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`Perfil de GitHub de ${member.name}`}
+                            >
                               <span className="member-avatar" aria-hidden="true">
                                 {member.initials}
                               </span>
+                              <span className="member-name-text">{member.name}</span>
+                            </a>
+                            <Mascot
+                              className="member-character"
+                              directions="/mascots/glasses-directions.webp"
+                              reactions="/mascots/glasses-reactions.webp"
+                              size={44}
+                              label="glasses"
+                            />
+                          </div>
+                        ) : isEliana ? (
+                          <a
+                            className={`member-pill-link member-pill-link--${member.variant}`}
+                            href={member.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`Perfil de GitHub de ${member.name}`}
+                          >
+                            <span className="member-pill-left">
+                              {isEliana && (
+                                <span className="member-avatar" aria-hidden="true">
+                                  {member.initials}
+                                </span>
+                              )}
                               <span className="member-name-text">{member.name}</span>
                             </span>
                             <span className="member-ext-badge" aria-hidden="true">
