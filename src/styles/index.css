@@ -1463,6 +1463,33 @@ code {
   transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 160ms ease;
 }
 
+.member-pill-link--ester {
+  justify-content: space-between;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.member-name-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.member-name-link:focus-visible {
+  outline: 2px solid var(--brand-dark);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.member-character {
+  width: 44px !important;
+  height: 44px !important;
+  flex-shrink: 0;
+}
+
 .member-pill-left {
   display: flex;
   align-items: center;

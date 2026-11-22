@@ -27,6 +27,7 @@ export const STARTUP_INFO = {
       name: 'Ester Mosquera',
       initials: 'EM',
       github: 'https://github.com/Kira-Blan',
+      variant: 'ester',
     },
     { name: 'Celeste Di Leonardo', initials: 'CD' },
   ],
