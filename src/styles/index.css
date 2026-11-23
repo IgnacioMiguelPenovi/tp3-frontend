@@ -1663,6 +1663,32 @@ code {
   flex-wrap: wrap;
 }
 
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.footer-credit {
+  font-size: 0.76rem;
+  color: rgba(228, 242, 235, 0.76);
+}
+
+.footer-credit a {
+  color: #b7ebd1;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.footer-credit a:hover,
+.footer-credit a:focus-visible {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
 /* Responsive Breakpoints (1200px, 900px, 400px) */
 @media (max-width: 1200px) {
   .container {
@@ -1744,6 +1770,10 @@ code {
 
   .nav-links .nav-pill {
     width: fit-content;
+  }
+
+  .footer-meta {
+    align-items: flex-start;
   }
 }
 

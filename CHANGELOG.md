@@ -4,6 +4,31 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-23] - Registro de autoría de la landing y crédito discreto en el pie de página (Ignacio Miguel Penovi)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 4 (High)
+* **Rama de trabajo:** `Ignacio`
+* **Entorno:** React 19 + Vite 6
+
+### 1. ¿Por qué se realizó el cambio? (Trazabilidad y atribución)
+* **Motivo:** Al reorganizar la bitácora del proyecto había quedado sin registrar la creación inicial de la landing page en React realizada el `2026-11-18` por **Ignacio Miguel Penovi**.
+* **Objetivo:** Incorporar el registro histórico completo de la creación de la página en `CHANGELOG.md` y añadir un crédito discreto y prolijo en el pie de página de la web sin alterar la jerarquía visual ni el contenido principal.
+
+### 2. ¿Qué se cambió?
+* **Pie de página (`src/components/SummaryAndTeam.jsx` y `src/styles/index.css`):**
+  * Se agregó en `.site-footer` una línea secundaria sutil (`Página desarrollada por Ignacio Miguel Penovi`) con enlace accesible a `https://github.com/IgnacioMiguelPenovi`.
+* **Bitácora (`CHANGELOG.md`):**
+  * Se incorporó la entrada cronológica del `[2026-11-18]` detallando la construcción inicial completa de la landing page (commit `5370301`, PR `#1`).
+
+### 3. Archivos modificados
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
 ## [2026-11-21] - Gatito Honey que sigue el cursor y cursor predeterminado (Ester)
 
 ### Datos Técnicos de la Asistencia IA
@@ -276,9 +301,35 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-18] - Creación inicial de la landing page en React (Ignacio Miguel Penovi)
 
+### Datos Técnicos de la Asistencia IA
+* **Autor / responsable del desarrollo:** Ignacio Miguel Penovi
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 4 (High)
+* **Rama de trabajo:** `Ignacio`
+* **Entorno:** React 19 + Vite 6 + lucide-react
 
+### 1. ¿Por qué se realizó el cambio? (Construcción base del TP3)
+* **Objetivo:** Construir desde cero la landing page en React correspondiente al TP3 (*Dos sentencias, dos soluciones*) para la startup asignada **RedBarrioAnimal** (Grupo 16 · S02-B · Bloque *Medios y rendición*, origen IFTS 16), cumpliendo todos los puntos de la consigna y la rúbrica.
 
+### 2. ¿Qué se construyó?
+* **Configuración del proyecto (`package.json`, `vite.config.js`, `index.html`, `.gitignore`):** Inicialización del entorno React 19 + Vite 6, carga del logo original en `public/logo_redbarrioanimal.webp` y exclusión de `/context/`, `node_modules/` y `dist/` en Git.
+* **Identidad y navegación (`src/components/Navbar.jsx`, `src/components/Hero.jsx`):** Presentación completa de RedBarrioAnimal, logo original sin recortes, objetivo, descripción del problema, bloque asignado y aclaración de alcance conceptual.
+* **Desglose lógico (`src/components/SentenceBreakdown.jsx`, `src/data/tp3Data.js`):** Fichas estructuradas de las sentencias **R3** y **R4** conservando los operadores `¬`, `y`, `o`, datos necesarios y consecuencias.
+* **Propuestas y diagramas de flujo agénticos (`src/components/ProposalSection.jsx`, `src/components/FlowDiagramR3.jsx`, `src/components/FlowDiagramR4.jsx`, `src/components/FlowPrimitives.jsx`):**
+  * Flujo 1 (**"Guardián del pago solidario" · R3**) y Flujo 2 (**"Revisor de rendición de cuentas" · R4**) con rombos de decisión, ramas `SÍ`/`NO`, borde punteado para decisiones del grupo, destaque para intervención humana y simulador interactivo de escenarios paso a paso.
+  * Ajustes visuales iterativos durante la revisión en escritorio (`1280×800`) para contener los textos dentro de los rombos y alinear el tronco vertical de ambos diagramas en grilla de 2 columnas.
+* **Desplegables accesibles, tabla comparativa y sección de equipo (`src/components/AccordionPanel.jsx`, `src/components/SummaryAndTeam.jsx`, `src/styles/index.css`):** Acordeones operables por clic y teclado (`Tab`, `Enter`, `Espacio`), tabla comparativa entre ambos flujos, lista de integrantes del Grupo 16 y hoja de estilos base.
+
+### 3. Archivos creados
+* `.gitignore`, `index.html`, `package.json`, `package-lock.json`, `vite.config.js`
+* `public/logo_redbarrioanimal.webp`
+* `src/main.jsx`, `src/App.jsx`, `src/data/tp3Data.js`, `src/styles/index.css`
+* `src/components/Navbar.jsx`, `src/components/Hero.jsx`, `src/components/SentenceBreakdown.jsx`, `src/components/ProposalSection.jsx`, `src/components/FlowPrimitives.jsx`, `src/components/FlowDiagramR3.jsx`, `src/components/FlowDiagramR4.jsx`, `src/components/AccordionPanel.jsx`, `src/components/SummaryAndTeam.jsx`
+* **Commit:** `5370301` (`feat: add RedBarrioAnimal TP3 React landing with R3 and R4 agentic flowcharts`, PR `#1`, coautor: Antigravity).
+
+---
 
 ## [2026-11-05] - Definición inicial de dos sentencias y desglose de reglas de negocio (AI)
 
