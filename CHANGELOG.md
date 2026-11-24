@@ -29,6 +29,35 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-22] - Personaje glasses que sigue el cursor para Ester Mosquera
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** OpenAI Codex
+* **Modelo IA:** GPT-6
+* **Rama de trabajo:** `Ester`
+* **Entorno:** React 19 + Vite 6 + page-mascot 0.1.0
+
+### 1. ¿Por qué se realizó el cambio? (Interacción y personalización)
+* **Pedido:** Incorporar el personaje `glasses` de Koboyo en la tarjeta de Ester Mosquera.
+* **Objetivo:** Hacer que el personaje mire hacia el cursor y reaccione al hacer clic, manteniendo el avatar circular verde `EM` y el enlace al perfil de GitHub de Ester.
+
+### 2. ¿Qué se cambió?
+* **Dependencias (`package.json` y `package-lock.json`):** Se agregó `page-mascot` (`^0.1.0`).
+* **Tarjeta del equipo (`src/components/SummaryAndTeam.jsx` y `src/styles/index.css`):** Se integró el componente `<Mascot>` a la derecha del nombre de Ester. El personaje sigue el cursor en dispositivos con puntero preciso y muestra reacciones al hacer clic; el avatar `EM` permanece a la izquierda.
+* **Recursos (`public/mascots/`):** Se agregaron las hojas `glasses-directions.webp` y `glasses-reactions.webp`.
+
+### 3. Archivos modificados
+* `package.json`
+* `package-lock.json`
+* `src/components/SummaryAndTeam.jsx`
+* `src/data/tp3Data.js`
+* `src/styles/index.css`
+* `public/mascots/glasses-directions.webp`
+* `public/mascots/glasses-reactions.webp`
+* **Commit:** `4eb510b` (`Add cursor-following Ester mascot`), con coautoría de OpenAI Codex.
+
+---
+
 ## [2026-11-21] - Gatito Honey que sigue el cursor y cursor predeterminado (Ester)
 
 ### Datos Técnicos de la Asistencia IA
@@ -336,6 +365,7 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 ### Datos Técnicos de la Asistencia IA
 * **Agente IA:** Antigravity (Google DeepMind)
 * **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Autor:** `Ester`
 * **Contexto de entrega:** Previo a la creación del repositorio Git (documentación generada en formato PDF / Markdown)
 
 ### 1. ¿Por qué se realizó el cambio? (Definición del problema y reglas de negocio)

@@ -47,7 +47,7 @@ Landing page desarrollada para la materia **Desarrollo de Sistemas Web · Front 
 | --- | --- |
 | **Miguel Penovi, Ignacio** | Configuración del repositorio y `.gitignore`; dirección agéntica para la construcción inicial completa de la landing en React + Vite (`Hero`, desglose lógico, propuestas R3 y R4, diagramas de flujo interactivos, desplegables accesibles, tabla comparativa y sección de equipo); correcciones visuales de los rombos, alineación vertical de los flujos y agrupamiento lógico `(tarjeta habilitada O billetera habilitada)` en R3; tarjeta interactiva con enlace a GitHub y crédito discreto en el pie de página; integración de Pull Requests, publicación en Vercel y estructuración base del `README.md`. |
 | **Moguilevsky, Eliana** | *(Completar)* |
-| **Mosquera, Ester** | *(Completar)* |
+| **Mosquera, Ester** | Definición inicial previa de la problemática de RedBarrioAnimal y estructuración de las dos sentencias base (R3 y R4) con el desglose formal de reglas de negocio, datos necesarios y consecuencias (`Punto3.pdf`); incorporación del favicon temático con huella animal en `public/favicon.png` y vinculación en `index.html`; tarjeta interactiva con enlace al perfil de GitHub en la sección de equipo (`src/components/SummaryAndTeam.jsx`) con estados de `:hover` (`scale(1.04)`) y foco accesible en `src/styles/index.css`; integración de la mascota interactiva `glasses` de Koboyo (`page-mascot`) en su tarjeta de equipo con seguimiento del cursor y reacciones al clic (`public/mascots/`); implementación y configuración del componente interactivo del gatito Honey (`oneko`) que acompaña el cursor en `src/App.jsx`, preservando el puntero nativo del navegador. |
 | **Di Leonardo, Celeste** | *(Completar)* |
 
 ### Revisión entre integrantes y mejora concreta
@@ -119,14 +119,14 @@ El registro cronológico completo de cambios del repositorio se encuentra ademá
 
 ### Mosquera, Ester
 
-- **Aplicación:** 
-- **Modelo:** 
-- **Para qué se usó:** 
+- **Aplicación:** OpenAI Codex / ChatGPT y Antigravity (Google DeepMind)
+- **Modelo:** GPT-6 y Gemini 3.8 Flash (Medium)
+- **Para qué se usó:** Definición inicial de la problemática y reglas de negocio de las sentencias R3 y R4 (`Punto3.pdf`), incorporación del favicon con huella animal (`index.html`), enlace interactivo con hover y foco accesible a su perfil de GitHub en la sección de equipo (`SummaryAndTeam.jsx`), integración de la mascota interactiva `glasses` de Koboyo (`page-mascot`) con seguimiento de cursor y reacciones al clic en su tarjeta de integrante (`public/mascots/`), e integración del gatito animado Honey (`oneko`) que sigue el cursor en la landing (`App.jsx`).
 - **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
-  - *Instrucción inicial:* 
-  - *Problema detectado:* 
-  - *Pedido de mejora:* 
-  - *Qué cambió y por qué:* 
+  - *Instrucción inicial:* Incorporar el gatito Honey de la librería `oneko` para que acompañe el movimiento del cursor en la landing.
+  - *Problema detectado:* Durante las pruebas se evaluaron variantes con cursores personalizados (ovillo y ratón) que no convencieron al grupo; el puntero de ratón se perdía visualmente sobre los fondos y no armonizaba con la temática de ayuda animal.
+  - *Pedido de mejora:* Conservar la animación del gatito Honey, sin textos adicionales, burbujas ni emojis, y restablecer el cursor predeterminado del navegador.
+  - *Qué cambió y por qué:* Se incorporó la dependencia `oneko` (`^0.6.1`) y se integró `<Oneko>` con `skin="honey"` en `src/App.jsx`, configurando `meow={false}`, `freerunChance={0}` y `bubbleEnabled={false}`, manteniendo el cursor nativo del sistema para una interacción visual limpia, agradable y accesible.
 
 ### Di Leonardo, Celeste
 
