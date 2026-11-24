@@ -57,7 +57,7 @@ export default function FlowDiagramR3({ activeNodes }) {
           <DecisionDiamond
             id="r3-dec1"
             title="3. Decisión 1"
-            subtitle="¿La compra NO fue pagada Y el total está confirmado Y el medio es tarjeta habilitada O billetera habilitada?"
+            subtitle="¿La compra NO fue pagada Y el total está confirmado Y el medio es (tarjeta habilitada O billetera habilitada)?"
             activeNodes={activeNodes}
             height={224}
           />
