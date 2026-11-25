@@ -1,6 +1,140 @@
-[Link Vercel](https://tp3-frontend-five.vercel.app/)
+# TP3 · Dos sentencias, dos soluciones — RedBarrioAnimal (Grupo 16)
 
-## Miguel Penovi, Ignacio
-## Moguilevsky, Eliana
-## Mosquera, Ester
-## Di Leonardo, Celeste
+Landing page desarrollada para la materia **Desarrollo de Sistemas Web · Front End** (**IFTS 29**, 2do Cuatrimestre 2026), construida de forma **100% agéntica** a partir de la startup y las dos sentencias lógicas asignadas del **IFTS 16**.
+
+---
+
+## Enlaces de entrega
+
+- **Landing publicada (Vercel):** https://tp3-frontend-five.vercel.app/
+- **Repositorio GitHub:** https://github.com/IgnacioMiguelPenovi/tp3-frontend
+- **Bitácora detallada de cambios:** [CHANGELOG.md](./CHANGELOG.md)
+
+---
+
+## Startup y bloque asignado
+
+- **Startup:** RedBarrioAnimal *(origen: estudiantes del IFTS 16)*
+- **Categoría:** Donaciones y bienestar animal
+- **Objetivo del servicio:** Red de donaciones por redondeo de compras para refugios de animales.
+- **Grupo:** Grupo 16
+- **Código de sorteo:** `S02-B`
+- **Bloque asignado:** Medios y rendición
+
+### Sentencias originales y desglose (Punto 3)
+
+#### Sentencia R3 — Propuesta 1: *"Guardián del pago solidario"*
+
+> *"Si la compra todavía no fue pagada, el cliente confirmó el total y el medio elegido es una tarjeta habilitada o una billetera habilitada, el sistema permite iniciar el pago; solo registra una donación como pagada si estaba incluida en ese total y el proveedor confirma el pago exitoso de esa misma operación."*
+
+| Datos necesarios | Condición | Consecuencia |
+| --- | --- | --- |
+| `idCompra` (identificador y estado de la compra), `tipoMedioPago` (tarjeta habilitada o billetera habilitada), `montoDonación` (importe de la donación, si existiese), `idProveedor` (proveedor que confirma el pago) | `¬Pagada(compra)` **y** `ClienteConfirma(total)` **y** (`TarjetaHabilitada` **o** `BilleteraHabilitada`) | • Permite iniciar el pago.<br>• Sólo registra la donación como pagada **si** (`DonaciónIncluidaEnTotal` **y** `ProveedorConfirmaÉxito`). |
+
+#### Sentencia R4 — Propuesta 2: *"Revisor de rendición de cuentas"*
+
+> *"Si un refugio solicita una transferencia y su informe de gastos está pendiente de verificación, el sistema deja la solicitud en revisión para una persona responsable."*
+
+| Datos necesarios | Condición | Consecuencia |
+| --- | --- | --- |
+| `idRefugio` (identificador del refugio), `tipoTransferencia` (bancaria, electrónica, etc.), `responsable` (persona o rol que revisará la solicitud) | `SolicitudTransferencia(refugio)` **y** `InformeGastosPendienteVerificación` | `Estado = "En revisión"` asignado a `responsable`. |
+
+---
+
+## Integrantes del grupo y aportes
+
+| Integrante | Aportes concretos en el proyecto |
+| --- | --- |
+| **Miguel Penovi, Ignacio** | Configuración del repositorio y `.gitignore`; dirección agéntica para la construcción inicial completa de la landing en React + Vite (`Hero`, desglose lógico, propuestas R3 y R4, diagramas de flujo interactivos, desplegables accesibles, tabla comparativa y sección de equipo); correcciones visuales de los rombos, alineación vertical de los flujos y agrupamiento lógico `(tarjeta habilitada O billetera habilitada)` en R3; tarjeta interactiva con enlace a GitHub y crédito discreto en el pie de página; integración de Pull Requests, publicación en Vercel y estructuración base del `README.md`. |
+| **Moguilevsky, Eliana** | Auditoría funcional y visual (QA) del sitio inicial con relevamiento y priorización de mejoras pendientes para coordinar su distribución en el equipo; revisión integral de navegación móvil y diseño adaptable; implementación del menú hamburguesa accesible (`aria-expanded`, cierre con `Escape` y autocierre al pulsar el logo en `src/components/Navbar.jsx`); resolución del corte de cabecera fija en mobile (`position: fixed` con compensación en `.app-shell`); unificación del sistema responsive en tres breakpoints (`1200px`, `900px` y `400px`) eliminando anchos rígidos en diagramas y rombos de decisión; diseño de tarjeta interactiva personal de GitHub con giro 3D de avatar, doble anillo menta y soporte para `prefers-reduced-motion`; creación, estandarización y mantenimiento de la bitácora técnica en `CHANGELOG.md`. Unificación de reglas de reducción de movimiento (`prefers-reduced-motion`) para las variantes de tarjetas de equipo; configuración de reglas locales de contexto agéntico (`AGENTS.md` privado) para control de rama, sincronización con `main` y registro automático en `CHANGELOG.md`. |
+| **Mosquera, Ester** | Definición inicial previa de la problemática de RedBarrioAnimal y estructuración de las dos sentencias base (R3 y R4) con el desglose formal de reglas de negocio, datos necesarios y consecuencias (`Punto3.pdf`); incorporación del favicon temático con huella animal en `public/favicon.png` y vinculación en `index.html`; tarjeta interactiva con enlace al perfil de GitHub en la sección de equipo (`src/components/SummaryAndTeam.jsx`) con estados de `:hover` (`scale(1.04)`) y foco accesible en `src/styles/index.css`; integración de la mascota interactiva `glasses` de Koboyo (`page-mascot`) en su tarjeta de equipo con seguimiento del cursor y reacciones al clic (`public/mascots/`); implementación y configuración del componente interactivo del gatito Honey (`oneko`) que acompaña el cursor en `src/App.jsx`, preservando el puntero nativo del navegador. |
+| **Di Leonardo, Celeste** | *(Completar)* |
+
+### Revisión entre integrantes y mejora concreta
+
+* **Quién revisó:** Eliana Moguilevsky (sobre la versión inicial desarrollada por Ignacio Miguel Penovi).
+* **Qué problema u oportunidad se detectó:** 1) En pantallas menores a 640px el menú de navegación desaparecía por completo (`.nav-links { display: none; }`), impidiendo navegar en mobile. 2) Al hacer scroll en dispositivos móviles, el header `sticky` se cortaba a la mitad por conflicto con `overflow-x: hidden` en `body`. 3) Los media queries estaban dispersos (`960px`, `900px`, `640px`) y los diagramas tenían columnas rígidas de `440px` y rombos con padding fijo de `96px` que desbordaban en pantallas de `400px`. 4) Faltaban enlaces a los perfiles de GitHub del equipo y una bitácora unificada (`CHANGELOG.md`) para registrar modelos, ramas y decisiones de cada iteración. 5) En la tarjeta personal de Eliana, el estado `:visited` persistente desentonaba con el resto de tarjetas del equipo.
+* **Qué mejora concreta se aplicó (y en qué archivo/PR):** Se relevó y distribuyó el listado de mejoras pendientes entre los integrantes del equipo; se implementó el menú hamburguesa accesible en `src/components/Navbar.jsx`; se fijó `.site-header` con compensación superior en `src/styles/index.css`; se unificaron los breakpoints en `1200px`, `900px` y `400px` con grillas fluidas `minmax(0, 1fr)` y padding proporcional `clamp()` en rombos; se implementó la variante interactiva personal de GitHub en `src/components/SummaryAndTeam.jsx`, `src/data/tp3Data.js` y `src/styles/index.css`; y se creó y mantuvo la bitácora cronológica en `CHANGELOG.md`.
+
+---
+
+## Cómo instalar y ejecutar el proyecto
+
+### Requisitos previos
+
+- **Node.js** (v18 o superior) y **npm**
+
+### Instalación y ejecución local
+
+```bash
+git clone https://github.com/IgnacioMiguelPenovi/tp3-frontend.git
+cd tp3-frontend
+npm install
+npm run dev
+```
+
+Abrir en el navegador la URL local que informa Vite (por defecto `http://localhost:5173`).
+
+### Compilación de producción y vista previa
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## Herramientas de IA, aplicaciones y modelos utilizados
+
+El registro cronológico completo de cambios del repositorio se encuentra además en [CHANGELOG.md](./CHANGELOG.md).
+
+### Miguel Penovi, Ignacio
+
+- **Aplicación:** Antigravity (Google DeepMind)
+- **Modelo:** Gemini 4 (High)
+- **Para qué se usó:** Construcción 100% agéntica de la landing base en React + Vite (estructura, estilos, desglose lógico, diagramas de flujo R3 y R4 con simulador de casos y desplegables accesibles), enlace interactivo de GitHub, crédito discreto en el pie de página, corrección del agrupamiento lógico en el diagrama R3 y armado de esta documentación.
+- **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
+  1. **Alineación y legibilidad de los diagramas (R3 y R4):**
+     - *Instrucción inicial:* generar la landing en React con ambos flujos gráficos respetando las sentencias R3 y R4 y las ramas `SÍ` / `NO`.
+     - *Problema detectado:* al revisar en desktop (`1280×800`), los textos dentro de los rombos de decisión de R3 tocaban los bordes diagonales y las filas con rama lateral `NO` desplazaban el tronco principal hacia el costado, desalineando las flechas verticales.
+     - *Pedido de mejora:* corregir las proporciones internas de los rombos, alinear los diagramas en un único eje vertical y unificar el fondo del marco del logo en el hero.
+     - *Qué cambió y por qué:* se refactorizó el layout de los diagramas a una grilla fija de 2 columnas (`.flow-canvas-grid`) manteniendo todo el tronco en la columna 1 y las ramas `NO` en la columna 2 con `grid-row: span 2`, y se aumentaron la altura y los márgenes internos de `DecisionDiamond` para garantizar legibilidad completa sin superposiciones.
+  2. **Agrupamiento lógico explícito en el diagrama R3:**
+     - *Problema detectado:* durante la revisión de la rúbrica se señaló que el primer rombo de R3 escribía `tarjeta habilitada O billetera habilitada` sin paréntesis, pudiendo prestarse a ambigüedad junto a los conectores `Y`.
+     - *Pedido de mejora:* agrupar explícitamente `(tarjeta habilitada O billetera habilitada)` en `src/components/FlowDiagramR3.jsx`.
+     - *Qué cambió y por qué:* se añadieron los paréntesis en la Decisión 1 para que el diagrama coincida exactamente con la condición formal `¬Pagada(compra) y ClienteConfirma(total) y (TarjetaHabilitada o BilleteraHabilitada)`.
+
+### Moguilevsky, Eliana
+
+* **Aplicación:**
+  1. **Antigravity (extensión en Visual Studio Code):** agente ejecutor de código, estilos, Git y bitácora.
+  2. **Google Gemini / NotebookLM (asistente web):** copiloto de auditoría contra la rúbrica del TP3, diagnóstico de accesibilidad y diseño de prompts estructurados.
+* **Modelo:** Gemini 3.8 Flash (High / Medium) en Antigravity; Gemini (modelo no informado en interfaz) en el asistente web.
+* **Para qué se usó:** En el asistente web se realizó el relevamiento de tareas pendientes frente a la rúbrica, el diagnóstico técnico de bugs móviles/a11y y la redacción de prompts estructurados y reglas de contexto (`AGENTS.md` privado). En Antigravity (VS Code) se ejecutaron esas instrucciones directamente sobre el repositorio sin edición manual de código: menú hamburguesa accesible, corrección de header fijo en mobile, unificación de breakpoints (`1200px`, `900px`, `400px`), variante interactiva personal de GitHub con soporte `prefers-reduced-motion` y mantenimiento de `CHANGELOG.md`.
+* **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
+  * *Instrucción inicial:* Implementar menú hamburguesa accesible para pantallas menores a 900px y adaptar la landing a los breakpoints `1200px`, `900px` y `400px`.
+  * *Problema detectado:* Al probar en vista móvil, el navbar se cortaba a la mitad durante el scroll por conflicto entre `overflow-x: hidden` y `position: sticky`; además, en la tarjeta personal de GitHub, el estado `:visited` persistente dejaba el botón visualmente desparejo respecto al resto del equipo.
+  * *Pedido de mejora:* Fijar el encabezado con `position: fixed` y compensación de margen superior en `.app-shell`, y eliminar el estado visitado persistente conservando el giro 3D de avatar y doble anillo menta en hover/focus.
+  * *Qué cambió y por qué:* Se ajustaron `Navbar.jsx`, `SummaryAndTeam.jsx` e `index.css` logrando navegación móvil estable sin cortes, lectura fluida sin scroll horizontal en `400px` y coherencia visual entre todas las tarjetas del equipo.
+
+### Mosquera, Ester
+
+- **Aplicación:** OpenAI Codex / ChatGPT y Antigravity (Google DeepMind)
+- **Modelo:** GPT-6 y Gemini 3.8 Flash (Medium)
+- **Para qué se usó:** Definición inicial de la problemática y reglas de negocio de las sentencias R3 y R4 (`Punto3.pdf`), incorporación del favicon con huella animal (`index.html`), enlace interactivo con hover y foco accesible a su perfil de GitHub en la sección de equipo (`SummaryAndTeam.jsx`), integración de la mascota interactiva `glasses` de Koboyo (`page-mascot`) con seguimiento de cursor y reacciones al clic en su tarjeta de integrante (`public/mascots/`), e integración del gatito animado Honey (`oneko`) que sigue el cursor en la landing (`App.jsx`).
+- **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
+  - *Instrucción inicial:* Incorporar el gatito Honey de la librería `oneko` para que acompañe el movimiento del cursor en la landing.
+  - *Problema detectado:* Durante las pruebas se evaluaron variantes con cursores personalizados (ovillo y ratón) que no convencieron al grupo; el puntero de ratón se perdía visualmente sobre los fondos y no armonizaba con la temática de ayuda animal.
+  - *Pedido de mejora:* Conservar la animación del gatito Honey, sin textos adicionales, burbujas ni emojis, y restablecer el cursor predeterminado del navegador.
+  - *Qué cambió y por qué:* Se incorporó la dependencia `oneko` (`^0.6.1`) y se integró `<Oneko>` con `skin="honey"` en `src/App.jsx`, configurando `meow={false}`, `freerunChance={0}` y `bubbleEnabled={false}`, manteniendo el cursor nativo del sistema para una interacción visual limpia, agradable y accesible.
+
+### Di Leonardo, Celeste
+
+- **Aplicación:** 
+- **Modelo:** 
+- **Para qué se usó:** 
+- **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
+  - *Instrucción inicial:* 
+  - *Problema detectado:* 
+  - *Pedido de mejora:* 
+  - *Qué cambió y por qué:* 

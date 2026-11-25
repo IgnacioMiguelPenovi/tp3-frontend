@@ -215,7 +215,19 @@ export default function SummaryAndTeam() {
             <strong>{STARTUP_INFO.name}</strong> · Asignación {STARTUP_INFO.groupNumber} (
             {STARTUP_INFO.sorteoCode}) · Origen {STARTUP_INFO.origin}
           </span>
-          <span>TP3 · Dos sentencias, dos soluciones · IFTS 29 (2026)</span>
+          <div className="footer-meta">
+            <span>TP3 · Dos sentencias, dos soluciones · IFTS 29 (2026)</span>
+            <span className="footer-credit">
+              Página desarrollada por{' '}
+              <a
+                href="https://github.com/IgnacioMiguelPenovi"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ignacio Miguel Penovi
+              </a>
+            </span>
+          </div>
         </div>
       </footer>
     </>
