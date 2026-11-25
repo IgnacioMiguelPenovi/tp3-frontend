@@ -1352,6 +1352,12 @@ code {
   margin-bottom: 10px;
 }
 
+.team-card-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
 .team-card-head h3 {
   font-size: 1.15rem;
   font-weight: 800;
