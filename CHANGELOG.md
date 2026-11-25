@@ -4,6 +4,28 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+#### [2026-11-24] - Consolidación de documentación en README.md y trazabilidad en bitácora (Eliana)
+
+##### Datos Técnicos de la Asistencia IA
+* **Agente IA:** Antigravity (Google DeepMind)
+* **Modelo IA:** Gemini 3.8 Flash (Medium)
+* **Rama de trabajo:** `Eliana`
+* **Entorno:** Markdown (`README.md`, `CHANGELOG.md`)
+
+##### 1. ¿Por qué se realizó el cambio? (Documentación y cumplimiento de rúbrica)
+* **Motivo:** Los campos correspondientes a Eliana Moguilevsky y la sección de revisión cruzada entre integrantes figuraban pendientes de completar en `README.md`, y faltaba detallar explícitamente la creación de `CHANGELOG.md` dentro de la entrada inicial de Eliana del `[2026-11-20]`.
+* **Objetivo:** Completar la documentación obligatoria de aportes individuales, auditoría QA del sitio, revisión entre integrantes, herramientas/modelos de IA utilizados y evidencia de iteración en `README.md` sin alterar los registros previos de Ignacio y Ester.
+
+##### 2. ¿Qué se cambió?
+* **Documentación principal (`README.md`):** Se completó la fila de aportes de Eliana Moguilevsky (incluyendo la auditoría funcional/visual y coordinación de tareas pendientes), la subsección de revisión entre integrantes con los hallazgos detectados sobre la versión inicial y su ficha técnica de IA con evidencia de iteración.
+* **Bitácora del proyecto (`CHANGELOG.md`):** Se detalló la creación inicial de `CHANGELOG.md` dentro de la entrada de Eliana del `[2026-11-20]` y se registró esta actualización documental.
+
+##### 3. Archivos modificados
+* `README.md`
+* `CHANGELOG.md`
+
+---
+
 ## [2026-11-23] - Registro de autoría de la landing y crédito discreto en el pie de página (Ignacio Miguel Penovi)
 
 ### Datos Técnicos de la Asistencia IA
@@ -322,6 +344,8 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
   * Se estilizó `.nav-toggle` con tamaño de objetivo táctil accesible (mínimo 44x44px según WCAG 2.5.8) y estilos claros de foco (`:focus-visible`).
   * Se eliminó el `.nav-links { display: none; }` obsoleto de la regla a 640px.
   * Se introdujo `@media (max-width: 900px)` que convierte `.nav-links` en un panel desplegable flotante con `backdrop-filter`, sombra y enlaces con padding generoso para pantallas táctiles.
+* **Bitácora del proyecto (`CHANGELOG.md`):**
+  * Se creó el archivo `CHANGELOG.md` estableciendo el formato estándar del repositorio para registrar cronológicamente cada cambio, su motivación, los archivos afectados y los metadatos técnicos de la Inteligencia Artificial empleada (agente, modelo, rama de trabajo y entorno).
 
 ### 3. Archivos modificados
 * `src/components/Navbar.jsx`
