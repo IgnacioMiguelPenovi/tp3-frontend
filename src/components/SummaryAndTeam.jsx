@@ -33,34 +33,34 @@ export default function SummaryAndTeam() {
             <table className="comparison-table">
               <thead>
                 <tr>
-                  <th>Aspecto</th>
-                  <th>Flujo 1 · R3 (Guardián del pago solidario)</th>
-                  <th>Flujo 2 · R4 (Revisor de rendición de cuentas)</th>
+                  <th scope="col">Aspecto</th>
+                  <th scope="col">Flujo 1 · R3 (Guardián del pago solidario)</th>
+                  <th scope="col">Flujo 2 · R4 (Revisor de rendición de cuentas)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Evento de inicio</td>
+                  <th scope="row">Evento de inicio</th>
                   <td>El cliente confirma el total de la compra</td>
                   <td>Un refugio solicita una transferencia</td>
                 </tr>
                 <tr>
-                  <td>Herramientas consultadas</td>
+                  <th scope="row">Herramientas consultadas</th>
                   <td>Registro de compra + servicio de pagos externo</td>
                   <td>Registro de solicitudes + informes de gastos</td>
                 </tr>
                 <tr>
-                  <td>Decisión principal</td>
+                  <th scope="row">Decisión principal</th>
                   <td>Validación de pago previo, medio habilitado y confirmación del proveedor</td>
                   <td>Verificación de si el informe de gastos está pendiente</td>
                 </tr>
                 <tr>
-                  <td>Intervención humana</td>
+                  <th scope="row">Intervención humana</th>
                   <td>No requerida en el flujo normal (solo conciliación excepcional)</td>
                   <td>Obligatoria: una persona responsable revisa el informe</td>
                 </tr>
                 <tr>
-                  <td>Decisiones agregadas del grupo</td>
+                  <th scope="row">Decisiones agregadas del grupo</th>
                   <td>Bloquear el pago e informar motivo si falla la condición inicial</td>
                   <td>Continuar el circuito normal si el informe ya fue verificado</td>
                 </tr>
