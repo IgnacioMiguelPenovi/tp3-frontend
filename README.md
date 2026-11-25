@@ -46,17 +46,15 @@ Landing page desarrollada para la materia **Desarrollo de Sistemas Web · Front 
 | Integrante | Aportes concretos en el proyecto |
 | --- | --- |
 | **Miguel Penovi, Ignacio** | Configuración del repositorio y `.gitignore`; dirección agéntica para la construcción inicial completa de la landing en React + Vite (`Hero`, desglose lógico, propuestas R3 y R4, diagramas de flujo interactivos, desplegables accesibles, tabla comparativa y sección de equipo); correcciones visuales de los rombos, alineación vertical de los flujos y agrupamiento lógico `(tarjeta habilitada O billetera habilitada)` en R3; tarjeta interactiva con enlace a GitHub y crédito discreto en el pie de página; integración de Pull Requests, publicación en Vercel y estructuración base del `README.md`. |
-| **Moguilevsky, Eliana** | *(Completar)* |
+| **Moguilevsky, Eliana** | Auditoría funcional y visual (QA) del sitio inicial con relevamiento y priorización de mejoras pendientes para coordinar su distribución en el equipo; revisión integral de navegación móvil y diseño adaptable; implementación del menú hamburguesa accesible (`aria-expanded`, cierre con `Escape` y autocierre al pulsar el logo en `src/components/Navbar.jsx`); resolución del corte de cabecera fija en mobile (`position: fixed` con compensación en `.app-shell`); unificación del sistema responsive en tres breakpoints (`1200px`, `900px` y `400px`) eliminando anchos rígidos en diagramas y rombos de decisión; diseño de tarjeta interactiva personal de GitHub con giro 3D de avatar, doble anillo menta y soporte para `prefers-reduced-motion`; creación, estandarización y mantenimiento de la bitácora técnica en `CHANGELOG.md`. Unificación de reglas de reducción de movimiento (`prefers-reduced-motion`) para las variantes de tarjetas de equipo; configuración de reglas locales de contexto agéntico (`AGENTS.md` privado) para control de rama, sincronización con `main` y registro automático en `CHANGELOG.md`. |
 | **Mosquera, Ester** | Definición inicial previa de la problemática de RedBarrioAnimal y estructuración de las dos sentencias base (R3 y R4) con el desglose formal de reglas de negocio, datos necesarios y consecuencias (`Punto3.pdf`); incorporación del favicon temático con huella animal en `public/favicon.png` y vinculación en `index.html`; tarjeta interactiva con enlace al perfil de GitHub en la sección de equipo (`src/components/SummaryAndTeam.jsx`) con estados de `:hover` (`scale(1.04)`) y foco accesible en `src/styles/index.css`; integración de la mascota interactiva `glasses` de Koboyo (`page-mascot`) en su tarjeta de equipo con seguimiento del cursor y reacciones al clic (`public/mascots/`); implementación y configuración del componente interactivo del gatito Honey (`oneko`) que acompaña el cursor en `src/App.jsx`, preservando el puntero nativo del navegador. |
 | **Di Leonardo, Celeste** | *(Completar)* |
 
 ### Revisión entre integrantes y mejora concreta
 
-*(Completar en equipo con al menos una revisión cruzada entre integrantes y la mejora concreta resultante)*
-
-- **Quién revisó:** 
-- **Qué problema u oportunidad se detectó:** 
-- **Qué mejora concreta se aplicó (y en qué archivo/PR):** 
+* **Quién revisó:** Eliana Moguilevsky (sobre la versión inicial desarrollada por Ignacio Miguel Penovi).
+* **Qué problema u oportunidad se detectó:** 1) En pantallas menores a 640px el menú de navegación desaparecía por completo (`.nav-links { display: none; }`), impidiendo navegar en mobile. 2) Al hacer scroll en dispositivos móviles, el header `sticky` se cortaba a la mitad por conflicto con `overflow-x: hidden` en `body`. 3) Los media queries estaban dispersos (`960px`, `900px`, `640px`) y los diagramas tenían columnas rígidas de `440px` y rombos con padding fijo de `96px` que desbordaban en pantallas de `400px`. 4) Faltaban enlaces a los perfiles de GitHub del equipo y una bitácora unificada (`CHANGELOG.md`) para registrar modelos, ramas y decisiones de cada iteración. 5) En la tarjeta personal de Eliana, el estado `:visited` persistente desentonaba con el resto de tarjetas del equipo.
+* **Qué mejora concreta se aplicó (y en qué archivo/PR):** Se relevó y distribuyó el listado de mejoras pendientes entre los integrantes del equipo; se implementó el menú hamburguesa accesible en `src/components/Navbar.jsx`; se fijó `.site-header` con compensación superior en `src/styles/index.css`; se unificaron los breakpoints en `1200px`, `900px` y `400px` con grillas fluidas `minmax(0, 1fr)` y padding proporcional `clamp()` en rombos; se implementó la variante interactiva personal de GitHub en `src/components/SummaryAndTeam.jsx`, `src/data/tp3Data.js` y `src/styles/index.css`; y se creó y mantuvo la bitácora cronológica en `CHANGELOG.md`.
 
 ---
 
@@ -108,14 +106,16 @@ El registro cronológico completo de cambios del repositorio se encuentra ademá
 
 ### Moguilevsky, Eliana
 
-- **Aplicación:** 
-- **Modelo:** 
-- **Para qué se usó:** 
-- **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
-  - *Instrucción inicial:* 
-  - *Problema detectado:* 
-  - *Pedido de mejora:* 
-  - *Qué cambió y por qué:* 
+* **Aplicación:**
+  1. **Antigravity (extensión en Visual Studio Code):** agente ejecutor de código, estilos, Git y bitácora.
+  2. **Google Gemini / NotebookLM (asistente web):** copiloto de auditoría contra la rúbrica del TP3, diagnóstico de accesibilidad y diseño de prompts estructurados.
+* **Modelo:** Gemini 3.8 Flash (High / Medium) en Antigravity; Gemini (modelo no informado en interfaz) en el asistente web.
+* **Para qué se usó:** En el asistente web se realizó el relevamiento de tareas pendientes frente a la rúbrica, el diagnóstico técnico de bugs móviles/a11y y la redacción de prompts estructurados y reglas de contexto (`AGENTS.md` privado). En Antigravity (VS Code) se ejecutaron esas instrucciones directamente sobre el repositorio sin edición manual de código: menú hamburguesa accesible, corrección de header fijo en mobile, unificación de breakpoints (`1200px`, `900px`, `400px`), variante interactiva personal de GitHub con soporte `prefers-reduced-motion` y mantenimiento de `CHANGELOG.md`.
+* **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
+  * *Instrucción inicial:* Implementar menú hamburguesa accesible para pantallas menores a 900px y adaptar la landing a los breakpoints `1200px`, `900px` y `400px`.
+  * *Problema detectado:* Al probar en vista móvil, el navbar se cortaba a la mitad durante el scroll por conflicto entre `overflow-x: hidden` y `position: sticky`; además, en la tarjeta personal de GitHub, el estado `:visited` persistente dejaba el botón visualmente desparejo respecto al resto del equipo.
+  * *Pedido de mejora:* Fijar el encabezado con `position: fixed` y compensación de margen superior en `.app-shell`, y eliminar el estado visitado persistente conservando el giro 3D de avatar y doble anillo menta en hover/focus.
+  * *Qué cambió y por qué:* Se ajustaron `Navbar.jsx`, `SummaryAndTeam.jsx` e `index.css` logrando navegación móvil estable sin cortes, lectura fluida sin scroll horizontal en `400px` y coherencia visual entre todas las tarjetas del equipo.
 
 ### Mosquera, Ester
 
