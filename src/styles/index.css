@@ -95,6 +95,24 @@ code {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 10px 14px;
+  transform: translateY(calc(-100% - 16px));
+  border-radius: 8px;
+  background: var(--brand-dark);
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .container {
   width: min(1160px, 100% - 48px);
   margin-inline: auto;
@@ -1296,11 +1314,12 @@ code {
   font-weight: 700;
 }
 
+.comparison-table tbody tr:last-child th,
 .comparison-table tbody tr:last-child td {
   border-bottom: 0;
 }
 
-.comparison-table tbody td:first-child {
+.comparison-table tbody th:first-child {
   font-weight: 700;
   color: var(--brand-dark);
   width: 22%;
@@ -1587,6 +1606,15 @@ code {
 
 /* Reduccion de movimiento unificada */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .member-pill-link--ignacio,
   .member-pill-link--ignacio::before,
   .member-pill-link--ignacio::after,

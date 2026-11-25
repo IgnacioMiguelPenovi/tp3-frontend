@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDownRight, Layers, Users, Sparkles, Info } from 'lucide-react';
+import { ArrowDownRight, Layers, Users, Sparkles, Info, Github } from 'lucide-react';
 import { STARTUP_INFO } from '../data/tp3Data';
 
 export default function Hero() {
@@ -50,6 +50,16 @@ export default function Hero() {
             <a href="#propuesta-r4" className="btn btn-secondary">
               Ver Propuesta 2 (R4)
               <ArrowDownRight size={17} aria-hidden="true" />
+            </a>
+            <a
+              href="https://github.com/McDiLeonardo-Alt"
+              className="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Mi perfil de GitHub (se abre en una pestaña nueva)"
+            >
+              <Github size={17} aria-hidden="true" />
+              Mi GitHub
             </a>
           </div>
 

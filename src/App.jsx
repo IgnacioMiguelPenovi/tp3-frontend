@@ -14,6 +14,9 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#contenido-principal">
+        Saltar al contenido principal
+      </a>
       <Oneko
         skin="honey"
         meow={false}
@@ -22,7 +25,7 @@ export default function App() {
         storageKey="redbarrioanimal:oneko"
       />
       <Navbar />
-      <main>
+      <main id="contenido-principal" tabIndex="-1">
         <Hero />
         <SentenceBreakdown />
         <ProposalSection

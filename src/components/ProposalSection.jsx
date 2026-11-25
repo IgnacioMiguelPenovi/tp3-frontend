@@ -69,6 +69,7 @@ export default function ProposalSection({ proposal, DiagramComponent, variant = 
               <button
                 type="button"
                 className={`scenario-btn ${selectedScenarioId === 'all' ? 'is-selected' : ''}`}
+                aria-pressed={selectedScenarioId === 'all'}
                 onClick={() => setSelectedScenarioId('all')}
               >
                 <RotateCcw size={14} aria-hidden="true" />
@@ -79,6 +80,7 @@ export default function ProposalSection({ proposal, DiagramComponent, variant = 
                   key={sc.id}
                   type="button"
                   className={`scenario-btn ${selectedScenarioId === sc.id ? 'is-selected' : ''}`}
+                  aria-pressed={selectedScenarioId === sc.id}
                   onClick={() => setSelectedScenarioId(sc.id)}
                 >
                   {sc.label}

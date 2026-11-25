@@ -4,6 +4,35 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-24] - Prioridad 3: refuerzo integral de accesibilidad (Grupo 16)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** GitHub Copilot
+* **Modelo IA activo:** modelo no informado
+* **Rama de trabajo:** `fix-r3-parentesis`
+* **Entorno:** React 19 + Vite 6 + lucide-react
+
+### 1. ¿Por qué se realizó el cambio? (Accesibilidad)
+* **Pedido:** Completar la tarea del Grupo 16 para reforzar la accesibilidad integral del sitio.
+* **Objetivo:** Facilitar la navegación por teclado, comunicar estados y relaciones semánticas, respetar preferencias de movimiento reducido y ofrecer un acceso identificable al perfil de GitHub.
+
+### 2. ¿Qué se cambió?
+* **Aplicación (`src/App.jsx`):** Se agregó el enlace visible al recibir foco para saltar al contenido principal y se identificó el elemento `main` como destino.
+* **Controles de escenario (`src/components/ProposalSection.jsx`):** Se agregó `aria-pressed` a la vista completa y a los botones de escenario según la selección activa.
+* **Tabla comparativa (`src/components/SummaryAndTeam.jsx`):** Se definieron encabezados de columna y fila con los atributos `scope` correspondientes.
+* **Enlace de GitHub (`src/components/Hero.jsx`):** Se añadió el botón visual integrado “Mi GitHub”, con ícono, nombre accesible y apertura segura en una pestaña nueva.
+* **Estilos (`src/styles/index.css`):** Se estilizó el enlace de salto y se amplió `prefers-reduced-motion` para reducir animaciones, transiciones y desplazamiento suave en todo el sitio.
+
+### 3. Archivos modificados
+* `src/App.jsx`
+* `src/components/ProposalSection.jsx`
+* `src/components/SummaryAndTeam.jsx`
+* `src/components/Hero.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
 ## [2026-11-21] - Gatito Honey que sigue el cursor y cursor predeterminado (Ester)
 
 ### Datos Técnicos de la Asistencia IA
