@@ -4,6 +4,26 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-25] - Enlace de GitHub de Celeste Di Leonardo
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** GitHub Copilot (Copilot SDK en VS Code)
+* **Modelo IA activo:** modelo no informado
+* **Rama de trabajo:** `fix-enlace-github-celeste`
+
+### ¿Qué se cambió?
+* Se quitó el botón «Mi GitHub» de la sección principal.
+* Se agregó a la tarjeta de Celeste Di Leonardo el enlace seguro a su perfil, con el ícono `/icono-gato-celeste.jpeg` y estados de interacción accesibles.
+
+### Archivos modificados
+* `src/components/Hero.jsx`
+* `src/data/tp3Data.js`
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
 ## [2026-11-25] - Identidad visual de Donuts & Code en la tarjeta del equipo (Grupo 16)
 
 ### Datos Técnicos de la Asistencia IA
