@@ -1488,6 +1488,13 @@ code {
   transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 160ms ease;
 }
 
+.member-pill-link--celeste {
+  justify-content: space-between;
+  min-height: 52px;
+  box-sizing: border-box;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 160ms ease;
+}
+
 .member-pill-link--ester {
   justify-content: space-between;
   min-height: 52px;
@@ -1584,9 +1591,18 @@ code {
   transform-style: preserve-3d;
 }
 
+.member-celeste-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 /* Hover y focus-visible Eliana: fondo menta, doble anillo luminoso, giro 360deg avatar EM, badge brand-primary */
 .member-pill-link--eliana:hover,
-.member-pill-link--eliana:focus-visible {
+.member-pill-link--eliana:focus-visible,
+.member-pill-link--celeste:hover,
+.member-pill-link--celeste:focus-visible {
   transform: none; /* override escalado de Ester */
   background: var(--bg-tinted);
   border-color: var(--brand-primary);
@@ -1594,7 +1610,9 @@ code {
 }
 
 .member-pill-link--eliana:hover .member-avatar,
-.member-pill-link--eliana:focus-visible .member-avatar {
+.member-pill-link--eliana:focus-visible .member-avatar,
+.member-pill-link--celeste:hover .member-avatar,
+.member-pill-link--celeste:focus-visible .member-avatar {
   transform: rotateY(360deg);
 }
 
@@ -1607,6 +1625,10 @@ code {
 
 /* Active (click): micro-pulsacion */
 .member-pill-link--eliana:active {
+  transform: scale(0.97);
+}
+
+.member-pill-link--celeste:active {
   transform: scale(0.97);
 }
 
@@ -1628,6 +1650,8 @@ code {
   .member-pill-link--eliana,
   .member-pill-link--eliana .member-avatar,
   .member-pill-link--eliana .member-ext-badge,
+  .member-pill-link--celeste,
+  .member-pill-link--celeste .member-avatar,
   .member-ext-badge {
     transition: none !important;
     transform: none !important;
@@ -1635,11 +1659,17 @@ code {
   }
 
   .member-pill-link--eliana:hover .member-avatar,
-  .member-pill-link--eliana:focus-visible .member-avatar {
+  .member-pill-link--eliana:focus-visible .member-avatar,
+  .member-pill-link--celeste:hover .member-avatar,
+  .member-pill-link--celeste:focus-visible .member-avatar {
     transform: none !important;
   }
 
   .member-pill-link--eliana:active {
+    transform: none !important;
+  }
+
+  .member-pill-link--celeste:active {
     transform: none !important;
   }
 }

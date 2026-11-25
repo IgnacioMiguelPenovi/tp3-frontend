@@ -90,6 +90,7 @@ export default function SummaryAndTeam() {
                 {STARTUP_INFO.members.map((member) => {
                   const isIgnacio = member.variant === 'ignacio';
                   const isEliana = member.variant === 'eliana';
+                  const isCeleste = member.variant === 'celeste';
                   const isEster = member.variant === 'ester';
 
                   return (
@@ -120,25 +121,38 @@ export default function SummaryAndTeam() {
                               label="glasses"
                             />
                           </div>
-                        ) : isEliana ? (
+                        ) : isEliana || isCeleste ? (
                           <a
                             className={`member-pill-link member-pill-link--${member.variant}`}
                             href={member.github}
                             target="_blank"
-                            rel="noreferrer"
-                            aria-label={`Perfil de GitHub de ${member.name}`}
+                            rel={isCeleste ? 'noopener noreferrer' : 'noreferrer'}
+                            aria-label={
+                              isCeleste
+                                ? 'Perfil de GitHub de Celeste Di Leonardo (se abre en una pestaña nueva)'
+                                : `Perfil de GitHub de ${member.name}`
+                            }
                           >
                             <span className="member-pill-left">
-                              {isEliana && (
+                              {(isEliana || isCeleste) && (
                                 <span className="member-avatar" aria-hidden="true">
                                   {member.initials}
                                 </span>
                               )}
                               <span className="member-name-text">{member.name}</span>
                             </span>
-                            <span className="member-ext-badge" aria-hidden="true">
-                              <Github size={14} aria-hidden="true" />
-                            </span>
+                            {isCeleste ? (
+                              <img
+                                className="member-celeste-icon"
+                                src={member.iconPath}
+                                alt=""
+                                aria-hidden="true"
+                              />
+                            ) : (
+                              <span className="member-ext-badge" aria-hidden="true">
+                                <Github size={14} aria-hidden="true" />
+                              </span>
+                            )}
                           </a>
                         ) : (
                           <a

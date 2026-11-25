@@ -29,7 +29,13 @@ export const STARTUP_INFO = {
       github: 'https://github.com/Kira-Blan',
       variant: 'ester',
     },
-    { name: 'Celeste Di Leonardo', initials: 'CD' },
+    {
+      name: 'Celeste Di Leonardo',
+      initials: 'CD',
+      github: 'https://github.com/McDiLeonardo-Alt',
+      iconPath: '/icono-gato-celeste.jpeg',
+      variant: 'celeste',
+    },
   ],
 };
 
