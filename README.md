@@ -48,7 +48,7 @@ Landing page desarrollada para la materia **Desarrollo de Sistemas Web · Front 
 | **Miguel Penovi, Ignacio** | Configuración del repositorio y `.gitignore`; dirección agéntica para la construcción inicial completa de la landing en React + Vite (`Hero`, desglose lógico, propuestas R3 y R4, diagramas de flujo interactivos, desplegables accesibles, tabla comparativa y sección de equipo); correcciones visuales de los rombos, alineación vertical de los flujos y agrupamiento lógico `(tarjeta habilitada O billetera habilitada)` en R3; tarjeta interactiva con enlace a GitHub y crédito discreto en el pie de página; integración de Pull Requests, publicación en Vercel y estructuración base del `README.md`. |
 | **Moguilevsky, Eliana** | Auditoría funcional y visual (QA) del sitio inicial con relevamiento y priorización de mejoras pendientes para coordinar su distribución en el equipo; revisión integral de navegación móvil y diseño adaptable; implementación del menú hamburguesa accesible (`aria-expanded`, cierre con `Escape` y autocierre al pulsar el logo en `src/components/Navbar.jsx`); resolución del corte de cabecera fija en mobile (`position: fixed` con compensación en `.app-shell`); unificación del sistema responsive en tres breakpoints (`1200px`, `900px` y `400px`) eliminando anchos rígidos en diagramas y rombos de decisión; diseño de tarjeta interactiva personal de GitHub con giro 3D de avatar, doble anillo menta y soporte para `prefers-reduced-motion`; creación, estandarización y mantenimiento de la bitácora técnica en `CHANGELOG.md`. Unificación de reglas de reducción de movimiento (`prefers-reduced-motion`) para las variantes de tarjetas de equipo; configuración de reglas locales de contexto agéntico (`AGENTS.md` privado) para control de rama, sincronización con `main` y registro automático en `CHANGELOG.md`. |
 | **Mosquera, Ester** | Definición inicial previa de la problemática de RedBarrioAnimal y estructuración de las dos sentencias base (R3 y R4) con el desglose formal de reglas de negocio, datos necesarios y consecuencias (`Punto3.pdf`); incorporación del favicon temático con huella animal en `public/favicon.png` y vinculación en `index.html`; tarjeta interactiva con enlace al perfil de GitHub en la sección de equipo (`src/components/SummaryAndTeam.jsx`) con estados de `:hover` (`scale(1.04)`) y foco accesible en `src/styles/index.css`; integración de la mascota interactiva `glasses` de Koboyo (`page-mascot`) en su tarjeta de equipo con seguimiento del cursor y reacciones al clic (`public/mascots/`); implementación y configuración del componente interactivo del gatito Honey (`oneko`) que acompaña el cursor en `src/App.jsx`, preservando el puntero nativo del navegador. |
-| **Di Leonardo, Celeste** | *(Completar)* |
+| **Di Leonardo, Celeste** | Dirección agéntica del refuerzo de accesibilidad integral (PR #18): enlace «Saltar al contenido principal» en `src/App.jsx`, `aria-pressed` en los botones de escenario de `ProposalSection.jsx`, `scope` en la tabla comparativa de `SummaryAndTeam.jsx` y regla `prefers-reduced-motion` en `src/styles/index.css`; botón «Mi GitHub» con enlace a mi perfil en `Hero.jsx`; incorporación del logo de Donuts & Code en la tarjeta «Equipo · Grupo 16» (PR #19); resolución del conflicto de `CHANGELOG.md` al integrar el PR #18; verificación de enlaces y completado de esta documentación.|
 
 ### Revisión entre integrantes y mejora concreta
 
@@ -130,11 +130,11 @@ El registro cronológico completo de cambios del repositorio se encuentra ademá
 
 ### Di Leonardo, Celeste
 
-- **Aplicación:** 
-- **Modelo:** 
-- **Para qué se usó:** 
+- **Aplicación:** GitHub Copilot (agente) en Visual Studio Code
+- **Modelo:** «Auto» con modelo no informado en la tarea de accesibilidad; «Auto (gpt-6-luna)» en la tarea del logo, tal como figuró en la respuesta del agente.
+- **Para qué se usó:** Refuerzo de accesibilidad integral, botón «Mi GitHub» y logo de Donuts & Code en la tarjeta de equipo, siempre sin editar código manualmente. Los cambios se revisaron en GitHub Desktop antes de cada commit.
 - **Evidencia de iteración (instrucción inicial → problema detectado → pedido de mejora):**
-  - *Instrucción inicial:* 
-  - *Problema detectado:* 
-  - *Pedido de mejora:* 
-  - *Qué cambió y por qué:* 
+  - *Instrucción inicial:* en `App.jsx`, `ProposalSection.jsx`, `SummaryAndTeam.jsx` e `index.css`, agregar un enlace para saltar al contenido, `aria-pressed` en los botones de escenario, `scope` en la tabla comparativa y `prefers-reduced-motion`; además, un botón «Mi GitHub» con enlace a mi perfil.
+  - *Problema detectado:* la landing no ofrecía ayudas de teclado ni de lector de pantalla y no respetaba la preferencia de movimiento reducido. Al integrar el PR #18 apareció un conflicto en `CHANGELOG.md` con las entradas de otros integrantes. Además, el agente no pudo ejecutar `npm run build` porque Node no estaba disponible en mi equipo, así que la verificación se hizo con la vista previa de Vercel.
+  - *Pedido de mejora:* conservar las entradas de todos en el `CHANGELOG.md` y pedir revisión del PR a Ignacio y Eliana.
+  - *Qué cambió y por qué:* el PR #18 se integró con las tres entradas del CHANGELOG conservadas. Después, con una sesión nueva del agente, se reemplazó el ícono de personas de la tarjeta «Equipo · Grupo 16» por el logo del equipo (altura de 44 px, `object-fit: contain`) sin tocar el logo de RedBarrioAnimal (PR #19).
