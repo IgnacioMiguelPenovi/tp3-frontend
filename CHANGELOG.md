@@ -4,6 +4,28 @@ Este documento registra cronológicamente los cambios realizados en el proyecto,
 
 ---
 
+## [2026-11-25] - Identidad visual de Donuts & Code en la tarjeta del equipo (Grupo 16)
+
+### Datos Técnicos de la Asistencia IA
+* **Agente IA:** GitHub Copilot
+* **Modelo IA activo:** modelo no informado
+* **Rama de trabajo:** `identidad-donuts-code`
+
+### 1. ¿Por qué se realizó el cambio? (Identidad visual)
+* **Pedido:** Reemplazar el ícono de personas en la tarjeta “Equipo · Grupo 16” por el logo de Donuts & Code.
+* **Objetivo:** Identificar visualmente al equipo desarrollador manteniendo el título y una presentación completa y alineada del logo.
+
+### 2. ¿Qué se cambió?
+* **Tarjeta de equipo (`src/components/SummaryAndTeam.jsx`):** Se reemplazó el ícono de personas por `/logo-donuts-code.jpeg` con un texto alternativo descriptivo.
+* **Estilos (`src/styles/index.css`):** Se definió una altura de 44 px, ancho automático y ajuste `contain` para el logo.
+
+### 3. Archivos modificados
+* `src/components/SummaryAndTeam.jsx`
+* `src/styles/index.css`
+* `CHANGELOG.md`
+
+---
+
 
 ## [2026-11-24] - Prioridad 3: refuerzo integral de accesibilidad (Grupo 16)
 

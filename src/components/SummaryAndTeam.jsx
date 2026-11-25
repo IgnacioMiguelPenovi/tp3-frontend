@@ -3,7 +3,6 @@ import { Mascot } from 'page-mascot';
 import {
   CheckCircle2,
   ShieldAlert,
-  Users,
   GraduationCap,
   ArrowUpRight,
   ExternalLink,
@@ -75,7 +74,11 @@ export default function SummaryAndTeam() {
           <div className="team-grid">
             <div className="team-card">
               <div className="team-card-head">
-                <Users size={18} aria-hidden="true" />
+                <img
+                  className="team-card-logo"
+                  src="/logo-donuts-code.jpeg"
+                  alt="Logo de Donuts & Code, equipo desarrollador"
+                />
                 <h3>Equipo · {STARTUP_INFO.groupNumber}</h3>
               </div>
               <p className="team-desc">
